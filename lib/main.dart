@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:terralith/utility/shared/constants/constants_ui.dart';
-import 'package:terralith/utility/shared/widgets/custom_text_form_field.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:terralith/core/app_route.dart';
+import 'package:terralith/features/presentation/auth/username/username_binding.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,68 +14,23 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: kBackGroundColor,
-        body: Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/background_with_logo.png'),
-                fit: BoxFit.cover),
-          ),
-          child: Center(
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(40),
-              margin: const EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFF769FCD),
-                    Color(0xFFB9D7EA),
-                  ],
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Masukkan Nama Kamu',
-                    style: whiteTextStyle.copyWith(
-                      fontWeight: medium,
-                      fontSize: 15,
-                    ),
-                  ),
-                  CustomTextFormField(
-                    controller: TextEditingController(
-                      text: 'Arman Maulana',
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    height: 45,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: kMainColor,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Lanjutkan',
-                        style: whiteTextStyle,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
+    return GetMaterialApp(
+      navigatorKey: Get.key,
+      getPages: AppRoute.routes,
+      initialRoute: AppRoute.initialRoute,
+      initialBinding: UsernameBinding(),
+      builder: (context, child) {
+        FToast().init(context);
+
+        child = EasyLoading.init()(context, child);
+        return MediaQuery(data: MediaQuery.of(context), child: child);
+      },
+      theme: ThemeData(
+        // Set the app theme to use Material Components
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        // Add MaterialComponents as parent theme
+        useMaterial3: true, // Enable Material3 if needed
       ),
     );
   }

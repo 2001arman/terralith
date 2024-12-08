@@ -13,6 +13,9 @@ dependencies:
   google_fonts: ^6.2.1
   get: ^4.6.6
 
+  fluttertoast: ^8.2.8
+  flutter_easyloading: ^3.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
