@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:terralith/features/presentation/main/main_ui.dart';
 import 'package:terralith/utility/shared/widgets/custom_main_button.dart';
 
 import '../../../../utility/shared/constants/constants_ui.dart';
@@ -50,10 +52,11 @@ class UsernameUi extends StatelessWidget {
                   controller: TextEditingController(
                     text: 'Arman Maulana',
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 CustomMainButton(
                   title: 'Lanjutkan',
-                  onTap: () {},
+                  onTap: () => Get.toNamed(MainUi.namePath),
                 )
               ],
             ),

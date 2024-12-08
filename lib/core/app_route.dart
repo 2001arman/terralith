@@ -3,6 +3,8 @@ import 'package:terralith/features/presentation/auth/login/login_binding.dart';
 import 'package:terralith/features/presentation/auth/login/login_ui.dart';
 import 'package:terralith/features/presentation/auth/username/username_binding.dart';
 import 'package:terralith/features/presentation/auth/username/username_ui.dart';
+import 'package:terralith/features/presentation/main/main_binding.dart';
+import 'package:terralith/features/presentation/main/main_ui.dart';
 
 class AppRoute {
   static const String initialRoute = LoginUi.namePath;
@@ -16,6 +18,11 @@ class AppRoute {
       name: LoginUi.namePath,
       page: () => LoginUi(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: MainUi.namePath,
+      page: () => MainUi(),
+      binding: MainBinding(),
     ),
   ];
 }
