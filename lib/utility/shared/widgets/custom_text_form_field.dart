@@ -4,15 +4,17 @@ import 'package:terralith/utility/shared/constants/constants_ui.dart';
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
-     this.hintText,
+    this.hintText,
     this.isPassword = false,
-     this.title,
+    this.title,
     this.minLines = 1,
     required this.controller,
     this.onChanged,
     this.isReadOnly = false,
     this.textInputType = TextInputType.text,
     this.validator,
+    this.fontSize = 16,
+    this.textAlign,
   });
 
   final String? hintText, title;
@@ -22,6 +24,8 @@ class CustomTextFormField extends StatefulWidget {
   final Function(String)? onChanged;
   final TextInputType textInputType;
   final String? Function(String?)? validator;
+  final double fontSize;
+  final TextAlign? textAlign;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -36,13 +40,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(widget.title != null)
-        Text(
-          widget.title!,
-          style: whiteTextStyle.copyWith(
-            fontSize: 14,
+        if (widget.title != null)
+          Text(
+            widget.title!,
+            style: whiteTextStyle.copyWith(
+              fontSize: 14,
+            ),
           ),
-        ),
         const SizedBox(height: 10),
         widget.isPassword
             ? TextFormField(
@@ -50,6 +54,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 obscureText: obscure,
                 onChanged: widget.onChanged,
                 validator: widget.validator,
+                textAlign: widget.textAlign ?? TextAlign.start,
+                style: mainTextStyle.copyWith(
+                  fontWeight: bold,
+                  fontSize: 18,
+                ),
                 decoration: InputDecoration(
                   hintText: widget.hintText,
                   suffixIcon: GestureDetector(
@@ -67,7 +76,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   ),
                   fillColor: kTextFormColor,
                   filled: true,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 9),
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 9,
+                    horizontal: 14,
+                  ),
 
                   // hintStyle: greyTextStyle.copyWith(fontSize: 13),
                   border: OutlineInputBorder(
@@ -94,9 +106,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   fontWeight: bold,
                   fontSize: 18,
                 ),
-                textAlign: TextAlign.center,
+                textAlign: widget.textAlign ?? TextAlign.start,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 9),
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 9,
+                    horizontal: 14,
+                  ),
                   hintText: widget.hintText,
                   fillColor: kTextFormColor,
                   // hintStyle: greyTextStyle.copyWith(fontSize: 13),

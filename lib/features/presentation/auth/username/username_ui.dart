@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:terralith/utility/shared/widgets/custom_main_button.dart';
 
 import '../../../../utility/shared/constants/constants_ui.dart';
 import '../../../../utility/shared/widgets/custom_text_form_field.dart';
@@ -50,20 +51,9 @@ class UsernameUi extends StatelessWidget {
                     text: 'Arman Maulana',
                   ),
                 ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  height: 45,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: kMainColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Lanjutkan',
-                      style: whiteTextStyle,
-                    ),
-                  ),
+                CustomMainButton(
+                  title: 'Lanjutkan',
+                  onTap: () {},
                 )
               ],
             ),
