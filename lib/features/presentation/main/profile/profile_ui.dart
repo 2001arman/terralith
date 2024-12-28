@@ -92,10 +92,15 @@ class ProfileUi extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/avatars/1.png',
-              width: 130,
-              height: 130,
+            GestureDetector(
+              onTap: logic.showChangeAvatar,
+              child: Obx(
+                () => Image.asset(
+                  state.activeAvatar.value,
+                  width: 130,
+                  height: 130,
+                ),
+              ),
             ),
             Text(
               'Arman Maulana',
