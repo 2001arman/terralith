@@ -27,22 +27,28 @@ class MainUi extends StatelessWidget {
                     bottomRight: Radius.circular(40),
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
                   children: [
-                    SizedBox(height: MediaQuery.of(context).padding.top),
-                    const SizedBox(height: 18),
-                    Text(
-                      'Selamat Datang, ',
-                      style: whiteTextStyle.copyWith(fontSize: 13),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: MediaQuery.of(context).padding.top),
+                        const SizedBox(height: 18),
+                        Text(
+                          'Selamat Datang, ',
+                          style: whiteTextStyle.copyWith(fontSize: 13),
+                        ),
+                        Text(
+                          'Arman Maulana !',
+                          style: whiteTextStyle.copyWith(
+                            fontSize: 20,
+                            fontWeight: extraBold,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      'Arman Maulana !',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 20,
-                        fontWeight: extraBold,
-                      ),
-                    ),
+                    const Spacer(),
+                    Image.asset('assets/avatars/8.png', width: 46),
                   ],
                 ),
               ),
@@ -145,28 +151,31 @@ class MainUi extends StatelessWidget {
               ),
               itemCount: state.homeItems.length,
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              itemBuilder: (context, index) => Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xffF7FBFC),
-                  boxShadow: [
-                    defaultBoxShadow,
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      state.homeItems[index].icon,
-                      width: 90,
-                    ),
-                    Text(
-                      state.homeItems[index].name,
-                      style: darkBlueTextStyle.copyWith(
-                          fontSize: 16, fontWeight: extraBold),
-                    )
-                  ],
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Get.toNamed(state.homeItems[index].path),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xffF7FBFC),
+                    boxShadow: [
+                      defaultBoxShadow,
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        state.homeItems[index].icon,
+                        width: 90,
+                      ),
+                      Text(
+                        state.homeItems[index].name,
+                        style: darkBlueTextStyle.copyWith(
+                            fontSize: 16, fontWeight: extraBold),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

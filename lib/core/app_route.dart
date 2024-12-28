@@ -5,6 +5,8 @@ import 'package:terralith/features/presentation/auth/username/username_binding.d
 import 'package:terralith/features/presentation/auth/username/username_ui.dart';
 import 'package:terralith/features/presentation/main/main_binding.dart';
 import 'package:terralith/features/presentation/main/main_ui.dart';
+import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
+import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 
 class AppRoute {
   static const String initialRoute = LoginUi.namePath;
@@ -23,6 +25,11 @@ class AppRoute {
       name: MainUi.namePath,
       page: () => MainUi(),
       binding: MainBinding(),
+    ),
+    GetPage(
+      name: ProfileUi.namePath,
+      page: () => ProfileUi(),
+      binding: ProfileBinding(),
     ),
   ];
 }

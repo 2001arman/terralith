@@ -14,6 +14,7 @@ Color kBlueSemiLightColor = const Color(0xFFD6E6F2);
 Color kBlueLightColor = const Color(0xFFB9D7EA);
 
 TextStyle whiteTextStyle = GoogleFonts.poppins(color: Colors.white);
+TextStyle blackTextStyle = GoogleFonts.poppins(color: kBlackColor);
 TextStyle mainTextStyle = GoogleFonts.poppins(color: kMainColor);
 TextStyle darkBlueTextStyle = GoogleFonts.poppins(color: kDarkBlueColor);
 TextStyle blueTextStyle = GoogleFonts.poppins(color: kBlueColor);
