@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../video_state.dart';
+import 'video_detail_ui.dart';
 
 class VideoDetailLogic extends GetxController {
   late YoutubePlayerController youtubeController;
@@ -9,9 +10,7 @@ class VideoDetailLogic extends GetxController {
 
   @override
   void onInit() {
-    Get.log('cek onInit');
     item = Get.arguments['item'];
-    Get.log('cek item name ${item.title}');
     youtubeController = YoutubePlayerController(
       initialVideoId: item.id,
       flags: const YoutubePlayerFlags(
@@ -22,17 +21,14 @@ class VideoDetailLogic extends GetxController {
     super.onInit();
   }
 
-  @override
-  void dispose() {
-    Get.log('cek on dispose');
-    super.dispose();
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    Get.log('cek on close');
-    // youtubeController.dispose();
-    super.onClose();
+  void goOtherVideo({required YoutubeItemModel data}) async {
+    Get.back();
+    await Get.delete<VideoDetailLogic>();
+    Get.toNamed(
+      VideoDetailUi.namePath,
+      arguments: {
+        'item': data,
+      },
+    );
   }
 }

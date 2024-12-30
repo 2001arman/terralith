@@ -124,16 +124,7 @@ class VideoDetailUi extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () async {
-                                      Get.back();
-                                      await Get.delete<VideoDetailLogic>();
-                                      Get.toNamed(
-                                        VideoDetailUi.namePath,
-                                        arguments: {
-                                          'item': data,
-                                        },
-                                      );
-                                    },
+                                    onTap: () => logic.goOtherVideo(data: data),
                                     child: Container(
                                       height: 120,
                                       decoration: BoxDecoration(
