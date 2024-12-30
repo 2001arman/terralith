@@ -1,3 +1,4 @@
+import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 
 class MainState {
@@ -5,7 +6,7 @@ class MainState {
     HomeItemModel(
       name: 'Kompetensi',
       icon: 'assets/icons/kompetensi.png',
-      path: ProfileUi.namePath,
+      path: KompetensiUi.namePath,
     ),
     HomeItemModel(
       name: 'Materi',

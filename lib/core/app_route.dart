@@ -3,6 +3,8 @@ import 'package:terralith/features/presentation/auth/login/login_binding.dart';
 import 'package:terralith/features/presentation/auth/login/login_ui.dart';
 import 'package:terralith/features/presentation/auth/username/username_binding.dart';
 import 'package:terralith/features/presentation/auth/username/username_ui.dart';
+import 'package:terralith/features/presentation/main/kompetensi/kompetensi_binding.dart';
+import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/main_binding.dart';
 import 'package:terralith/features/presentation/main/main_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
@@ -37,6 +39,11 @@ class AppRoute {
       name: StatisticUi.namePath,
       page: () => StatisticUi(),
       binding: StatisticBinding(),
+    ),
+    GetPage(
+      name: KompetensiUi.namePath,
+      page: () => KompetensiUi(),
+      binding: KompetensiBinding(),
     ),
   ];
 }

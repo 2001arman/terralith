@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:terralith/core/app_route.dart';
 import 'package:terralith/features/presentation/auth/username/username_binding.dart';
@@ -20,8 +19,6 @@ class MainApp extends StatelessWidget {
       initialRoute: AppRoute.initialRoute,
       initialBinding: UsernameBinding(),
       builder: (context, child) {
-        FToast().init(context);
-
         child = EasyLoading.init()(context, child);
         return MediaQuery(data: MediaQuery.of(context), child: child);
       },
