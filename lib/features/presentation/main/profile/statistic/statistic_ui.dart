@@ -210,7 +210,7 @@ class StatisticUi extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
+                SizedBox(
                   width: 68,
                   child: Row(
                     children: [

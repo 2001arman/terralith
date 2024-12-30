@@ -11,6 +11,10 @@ import 'package:terralith/features/presentation/main/profile/profile_binding.dar
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_binding.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_ui.dart';
+import 'package:terralith/features/presentation/main/video/video_binding.dart';
+import 'package:terralith/features/presentation/main/video/video_detail/video_detail_binding.dart';
+import 'package:terralith/features/presentation/main/video/video_detail/video_detail_ui.dart';
+import 'package:terralith/features/presentation/main/video/video_ui.dart';
 
 class AppRoute {
   static const String initialRoute = LoginUi.namePath;
@@ -44,6 +48,16 @@ class AppRoute {
       name: KompetensiUi.namePath,
       page: () => KompetensiUi(),
       binding: KompetensiBinding(),
+    ),
+    GetPage(
+      name: VideoUi.namePath,
+      page: () => VideoUi(),
+      binding: VideoBinding(),
+    ),
+    GetPage(
+      name: VideoDetailUi.namePath,
+      page: () => VideoDetailUi(),
+      binding: VideoDetailBinding(),
     ),
   ];
 }

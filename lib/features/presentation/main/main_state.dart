@@ -1,5 +1,6 @@
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
+import 'package:terralith/features/presentation/main/video/video_ui.dart';
 
 class MainState {
   List<HomeItemModel> homeItems = [
@@ -16,7 +17,7 @@ class MainState {
     HomeItemModel(
       name: 'Video',
       icon: 'assets/icons/video.png',
-      path: ProfileUi.namePath,
+      path: VideoUi.namePath,
     ),
     HomeItemModel(
       name: 'Evaluasi Akhir',
