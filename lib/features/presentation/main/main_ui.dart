@@ -130,8 +130,9 @@ class MainUi extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: kWhiteColor,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.only(bottom: 40),
         children: [
           topBarSection(),
           Padding(
@@ -142,40 +143,42 @@ class MainUi extends StatelessWidget {
                   blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
             ),
           ),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 18,
-              ),
-              itemCount: state.homeItems.length,
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: () => Get.toNamed(state.homeItems[index].path),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color(0xffF7FBFC),
-                    boxShadow: [
-                      defaultBoxShadow,
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        state.homeItems[index].icon,
-                        width: 90,
-                      ),
-                      Text(
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 18,
+            ),
+            itemCount: state.homeItems.length,
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () => Get.toNamed(state.homeItems[index].path),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 22),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xffF7FBFC),
+                  boxShadow: [
+                    defaultBoxShadow,
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Image.asset(
+                      state.homeItems[index].icon,
+                      width: 90,
+                    ),
+                    FittedBox(
+                      child: Text(
                         state.homeItems[index].name,
                         style: darkBlueTextStyle.copyWith(
                             fontSize: 16, fontWeight: extraBold),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),

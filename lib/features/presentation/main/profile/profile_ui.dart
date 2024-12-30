@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_logic.dart';
+import 'package:terralith/features/presentation/main/profile/statistic/statistic_ui.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 
 class ProfileUi extends StatelessWidget {
@@ -32,44 +33,48 @@ class ProfileUi extends StatelessWidget {
     Widget containerMenuItem({
       required String icon,
       required String title,
+      required VoidCallback onTap,
     }) {
-      return Container(
-        width: double.infinity,
-        height: 75,
-        padding: const EdgeInsets.all(14),
-        margin: const EdgeInsets.only(bottom: 17),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: kBlueSemiLightColor.withOpacity(0.5),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 48,
-              height: 48,
-              margin: const EdgeInsets.only(right: 11),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: kBlueSemiLightColor,
+      return GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: double.infinity,
+          height: 75,
+          padding: const EdgeInsets.all(14),
+          margin: const EdgeInsets.only(bottom: 17),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: kBlueSemiLightColor.withOpacity(0.5),
+          ),
+          child: Row(
+            children: [
+              Container(
+                width: 48,
+                height: 48,
+                margin: const EdgeInsets.only(right: 11),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: kBlueSemiLightColor,
+                ),
+                child: Image.asset(
+                  icon,
+                  width: 28,
+                  height: 28,
+                ),
               ),
-              child: Image.asset(
-                icon,
-                width: 28,
-                height: 28,
+              Expanded(
+                child: Text(
+                  title,
+                  style: blueTextStyle.copyWith(fontSize: 18, fontWeight: bold),
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                title,
-                style: blueTextStyle.copyWith(fontSize: 18, fontWeight: bold),
+              Icon(
+                Icons.arrow_forward_ios,
+                color: kBlueColor,
               ),
-            ),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: kBlueColor,
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
@@ -134,14 +139,17 @@ class ProfileUi extends StatelessWidget {
             containerMenuItem(
               icon: 'assets/icons/user.png',
               title: 'Ubah Profil',
+              onTap: () {},
             ),
             containerMenuItem(
               icon: 'assets/icons/statistik.png',
               title: 'Statistik',
+              onTap: () => Get.toNamed(StatisticUi.namePath),
             ),
             containerMenuItem(
               icon: 'assets/icons/logout.png',
               title: 'Keluar',
+              onTap: () {},
             ),
           ],
         ),

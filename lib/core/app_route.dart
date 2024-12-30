@@ -7,6 +7,8 @@ import 'package:terralith/features/presentation/main/main_binding.dart';
 import 'package:terralith/features/presentation/main/main_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
+import 'package:terralith/features/presentation/main/profile/statistic/statistic_binding.dart';
+import 'package:terralith/features/presentation/main/profile/statistic/statistic_ui.dart';
 
 class AppRoute {
   static const String initialRoute = LoginUi.namePath;
@@ -30,6 +32,11 @@ class AppRoute {
       name: ProfileUi.namePath,
       page: () => ProfileUi(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: StatisticUi.namePath,
+      page: () => StatisticUi(),
+      binding: StatisticBinding(),
     ),
   ];
 }
