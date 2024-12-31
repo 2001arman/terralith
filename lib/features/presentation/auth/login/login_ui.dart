@@ -54,6 +54,7 @@ class LoginUi extends StatelessWidget {
                     CustomTextFormField(
                       controller: TextEditingController(text: 'armanmaulana07'),
                       title: 'Nama Pengguna',
+                      backgroundColor: kTextFormColor,
                     ),
                     CustomTextFormField(
                       controller: TextEditingController(text: 'armanmaulana07'),

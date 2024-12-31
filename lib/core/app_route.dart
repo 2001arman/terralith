@@ -7,6 +7,10 @@ import 'package:terralith/features/presentation/main/kompetensi/kompetensi_bindi
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/main_binding.dart';
 import 'package:terralith/features/presentation/main/main_ui.dart';
+import 'package:terralith/features/presentation/main/materi/materi_binding.dart';
+import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
+import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_binding.dart';
+import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_binding.dart';
@@ -58,6 +62,16 @@ class AppRoute {
       name: VideoDetailUi.namePath,
       page: () => VideoDetailUi(),
       binding: VideoDetailBinding(),
+    ),
+    GetPage(
+      name: MateriUi.namePath,
+      page: () => MateriUi(),
+      binding: MateriBinding(),
+    ),
+    GetPage(
+      name: SubMateriUi.namePath,
+      page: () => SubMateriUi(),
+      binding: SubMateriBinding(),
     ),
   ];
 }

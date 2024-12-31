@@ -15,6 +15,9 @@ class CustomTextFormField extends StatefulWidget {
     this.validator,
     this.fontSize = 16,
     this.textAlign,
+    this.suffixIcon,
+    this.elevation,
+    this.backgroundColor,
   });
 
   final String? hintText, title;
@@ -26,6 +29,9 @@ class CustomTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final double fontSize;
   final TextAlign? textAlign;
+  final Widget? suffixIcon;
+  final double? elevation;
+  final Color? backgroundColor;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -96,42 +102,53 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   ),
                 ),
               )
-            : TextFormField(
-                controller: widget.controller,
-                obscureText: widget.isPassword,
-                readOnly: widget.isReadOnly,
-                onChanged: widget.onChanged,
-                validator: widget.validator,
-                style: mainTextStyle.copyWith(
-                  fontWeight: bold,
-                  fontSize: 18,
+            : Material(
+                elevation: widget.elevation ?? 0,
+                borderOnForeground: false,
+                borderRadius: BorderRadius.circular(13),
+                color: widget.backgroundColor ?? kTextFormColor,
+                type: widget.elevation == null
+                    ? MaterialType.transparency
+                    : MaterialType.canvas,
+                child: TextFormField(
+                  controller: widget.controller,
+                  obscureText: widget.isPassword,
+                  readOnly: widget.isReadOnly,
+                  onChanged: widget.onChanged,
+                  validator: widget.validator,
+                  style: mainTextStyle.copyWith(
+                    fontWeight: bold,
+                    fontSize: 18,
+                  ),
+                  textAlign: widget.textAlign ?? TextAlign.start,
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 9,
+                      horizontal: 14,
+                    ),
+                    suffixIcon: widget.suffixIcon,
+                    hintText: widget.hintText,
+                    fillColor: widget.backgroundColor ?? kTextFormColor,
+                    hintStyle: blueTextStyle.copyWith(
+                      color: const Color(0xFFB9E5E8),
+                    ),
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: BorderSide.none,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                  maxLines: widget.minLines,
+                  keyboardType: widget.textInputType,
                 ),
-                textAlign: widget.textAlign ?? TextAlign.start,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 9,
-                    horizontal: 14,
-                  ),
-                  hintText: widget.hintText,
-                  fillColor: kTextFormColor,
-                  // hintStyle: greyTextStyle.copyWith(fontSize: 13),
-
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(13),
-                    borderSide: BorderSide.none,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(13),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(13),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-                maxLines: widget.minLines,
-                keyboardType: widget.textInputType,
               ),
         const SizedBox(height: 14),
       ],

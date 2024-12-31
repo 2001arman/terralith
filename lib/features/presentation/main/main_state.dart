@@ -1,4 +1,5 @@
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
+import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_ui.dart';
 
@@ -12,7 +13,7 @@ class MainState {
     HomeItemModel(
       name: 'Materi',
       icon: 'assets/icons/materi.png',
-      path: ProfileUi.namePath,
+      path: MateriUi.namePath,
     ),
     HomeItemModel(
       name: 'Video',
