@@ -12,12 +12,17 @@ class SubMateriUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget itemContainer() {
+    Widget itemContainer({
+      required Widget prefix,
+      required String title,
+      required Widget content,
+      double titlePadding = 6,
+    }) {
       return GestureDetector(
         onTap: () => Get.to(const DetailMateriUi()),
         child: Container(
           width: double.infinity,
-          height: 73,
+          // height: 73,
           padding: const EdgeInsets.symmetric(vertical: 9, horizontal: 10),
           margin: const EdgeInsets.only(bottom: 19),
           decoration: BoxDecoration(
@@ -37,11 +42,7 @@ class SubMateriUi extends StatelessWidget {
                   color: kBlueSemiLightColor,
                 ),
                 child: Center(
-                  child: Text(
-                    '1',
-                    style: blueTextStyle.copyWith(
-                        fontWeight: semiBold, fontSize: 24),
-                  ),
+                  child: prefix,
                 ),
               ),
               const SizedBox(width: 9),
@@ -51,40 +52,77 @@ class SubMateriUi extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Pengertian Litosfer',
+                      title,
                       style: blueSemiLightTextStyle.copyWith(
                         color: const Color(0xFF6E89A9),
                         fontWeight: semiBold,
                       ),
                     ),
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: LinearProgressIndicator(
-                            value: 90 / 100,
-                            backgroundColor: kGreyColor,
-                            color: const Color(0xFF6E89A9),
-                            minHeight: 7,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '90%',
-                          style: blueSemiLightTextStyle.copyWith(
-                            color: const Color(0xFF6E89A9),
-                            fontSize: 12,
-                          ),
-                        )
-                      ],
-                    )
+                    SizedBox(height: titlePadding),
+                    content,
                   ],
                 ),
               )
             ],
           ),
         ),
+      );
+    }
+
+    Widget progressLinearWidget() {
+      return Row(
+        children: [
+          Expanded(
+            child: LinearProgressIndicator(
+              value: 90 / 100,
+              backgroundColor: kGreyColor,
+              color: const Color(0xFF6E89A9),
+              minHeight: 7,
+              borderRadius: BorderRadius.circular(5),
+            ),
+          ),
+          const SizedBox(width: 4),
+          Text(
+            '90%',
+            style: blueSemiLightTextStyle.copyWith(
+              color: const Color(0xFF6E89A9),
+              fontSize: 12,
+            ),
+          )
+        ],
+      );
+    }
+
+    Widget kuisInfoWidget() {
+      return Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                'Jumlah soal: ',
+                style: blueTextStyle.copyWith(fontWeight: light, fontSize: 11),
+              ),
+              Text(
+                '10 butir',
+                style:
+                    blueTextStyle.copyWith(fontWeight: extraBold, fontSize: 11),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                'Waktu pengerjaan: ',
+                style: blueTextStyle.copyWith(fontWeight: light, fontSize: 11),
+              ),
+              Text(
+                '15 menit',
+                style:
+                    blueTextStyle.copyWith(fontWeight: extraBold, fontSize: 11),
+              ),
+            ],
+          ),
+        ],
       );
     }
 
@@ -103,10 +141,39 @@ class SubMateriUi extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 25),
         children: [
-          itemContainer(),
-          itemContainer(),
-          itemContainer(),
-          itemContainer(),
+          itemContainer(
+            prefix: Text(
+              '1',
+              style: blueTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
+            ),
+            title: 'Pengertian Litosfer',
+            content: progressLinearWidget(),
+          ),
+          itemContainer(
+            prefix: Text(
+              '2',
+              style: blueTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
+            ),
+            title: 'Siklus Batuan',
+            content: progressLinearWidget(),
+          ),
+          itemContainer(
+            prefix: Text(
+              '3',
+              style: blueTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
+            ),
+            title: 'Mineral',
+            content: progressLinearWidget(),
+          ),
+          itemContainer(
+            prefix: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Image.asset('assets/icons/kuis.png'),
+            ),
+            title: 'Kuis Batuan',
+            titlePadding: 4,
+            content: kuisInfoWidget(),
+          ),
         ],
       ),
     );
