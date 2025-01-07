@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
     
   google_fonts: ^6.2.1
+  firebase_core: ^3.9.0
   get: ^4.6.6
 
   flutter_easyloading: ^3.0.5
@@ -41,12 +42,12 @@ flutter:
 
 flutter_native_splash:
   color: "#001F3F"
-  image: assets/logo.png
+  image: assets/logo_icon_app.png
   branding: assets/TERRALITH.png
   branding_bottom_padding: 34
 
   android_12:
-    image: assets/logo.png
+    image: assets/logo_icon_app.png
     color: "#001F3F"
 
 

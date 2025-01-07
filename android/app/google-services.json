@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "73758042456",
+    "project_id": "terralith-be409",
+    "storage_bucket": "terralith-be409.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73758042456:android:fdfe11b86ce3491eacdd2d",
+        "android_client_info": {
+          "package_name": "com.example.terralith"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPqpeEFW4DugVL4zxhhUiQFT1DbvYahMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
