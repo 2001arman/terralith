@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:terralith/features/domain/quiz/quiz_result_model.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_result/quiz_result_ui.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
@@ -32,7 +33,7 @@ class QuizLogic extends GetxController {
       if (state.remainingTime > 0) {
         state.remainingTime--;
       } else {
-        _timer!.cancel();
+        return gotoResult();
       }
     });
   }
@@ -44,7 +45,13 @@ class QuizLogic extends GetxController {
   }
 
   void gotoResult() {
-    Get.offAndToNamed(QuizResultUi.namePath);
+    _timer!.cancel();
+    final result = QuizResultModel(
+        title: 'Tenaga Geologi',
+        benar: state.soalBenar,
+        salah: state.soalSalah,
+        point: state.poin.value);
+    Get.offAndToNamed(QuizResultUi.namePath, arguments: [result]);
   }
 
   void nextSoal(bool benar) {
@@ -52,12 +59,16 @@ class QuizLogic extends GetxController {
       Get.back();
       if (benar) {
         state.poin += 10;
-        if (state.activeSoal.value == state.quizList.length - 1) {
-          return gotoResult();
-        }
-        state.selectedJawaban.value = null;
-        state.activeSoal.value++;
+        state.soalBenar++;
+      } else {
+        state.soalSalah++;
       }
+      if (state.activeSoal.value == state.quizList.length - 1) {
+        return gotoResult();
+      }
+      state.selectedJawaban.value = null;
+      state.activeSoal.value++;
+      return;
     }
   }
 

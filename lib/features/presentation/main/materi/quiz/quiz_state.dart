@@ -5,6 +5,8 @@ class QuizState {
   var selectedJawaban = Rxn<String>();
   var poin = 0.obs;
   var remainingTime = 10.obs; // 5 minutes in seconds
+  int soalBenar = 0;
+  int soalSalah = 0;
 
   List<QuizModel> quizList = [
     QuizModel(
