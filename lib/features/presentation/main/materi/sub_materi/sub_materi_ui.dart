@@ -16,10 +16,11 @@ class SubMateriUi extends StatelessWidget {
       required Widget prefix,
       required String title,
       required Widget content,
+      required VoidCallback onTap,
       double titlePadding = 6,
     }) {
       return GestureDetector(
-        onTap: () => Get.to(const DetailMateriUi()),
+        onTap: onTap,
         child: Container(
           width: double.infinity,
           // height: 73,
@@ -148,6 +149,7 @@ class SubMateriUi extends StatelessWidget {
             ),
             title: 'Pengertian Litosfer',
             content: progressLinearWidget(),
+            onTap: () => Get.to(const DetailMateriUi()),
           ),
           itemContainer(
             prefix: Text(
@@ -156,6 +158,7 @@ class SubMateriUi extends StatelessWidget {
             ),
             title: 'Siklus Batuan',
             content: progressLinearWidget(),
+            onTap: () => Get.to(const DetailMateriUi()),
           ),
           itemContainer(
             prefix: Text(
@@ -164,6 +167,7 @@ class SubMateriUi extends StatelessWidget {
             ),
             title: 'Mineral',
             content: progressLinearWidget(),
+            onTap: () => Get.to(const DetailMateriUi()),
           ),
           itemContainer(
             prefix: Padding(
@@ -173,6 +177,7 @@ class SubMateriUi extends StatelessWidget {
             title: 'Kuis Batuan',
             titlePadding: 4,
             content: kuisInfoWidget(),
+            onTap: logic.showQuizDialog,
           ),
         ],
       ),

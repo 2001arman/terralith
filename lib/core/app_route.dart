@@ -9,6 +9,10 @@ import 'package:terralith/features/presentation/main/main_binding.dart';
 import 'package:terralith/features/presentation/main/main_ui.dart';
 import 'package:terralith/features/presentation/main/materi/materi_binding.dart';
 import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
+import 'package:terralith/features/presentation/main/materi/quiz/quiz_binding.dart';
+import 'package:terralith/features/presentation/main/materi/quiz/quiz_result/quiz_result_binding.dart';
+import 'package:terralith/features/presentation/main/materi/quiz/quiz_result/quiz_result_ui.dart';
+import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_binding.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
@@ -72,6 +76,16 @@ class AppRoute {
       name: SubMateriUi.namePath,
       page: () => SubMateriUi(),
       binding: SubMateriBinding(),
+    ),
+    GetPage(
+      name: QuizUi.namePath,
+      page: () => QuizUi(),
+      binding: QuizBinding(),
+    ),
+    GetPage(
+      name: QuizResultUi.namePath,
+      page: () => QuizResultUi(),
+      binding: QuizResultBinding(),
     ),
   ];
 }

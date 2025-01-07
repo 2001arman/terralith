@@ -17,6 +17,9 @@ dependencies:
   flutter_widget_from_html: ^0.15.3
   youtube_player_flutter: ^9.1.1
 
+  auto_size_text: ^3.0.0
+  syncfusion_flutter_pdfviewer: ^27.2.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -30,3 +33,4 @@ flutter:
     - assets/icons/
     - assets/avatars/
     - assets/materi/
+    - assets/materi/pdf/
