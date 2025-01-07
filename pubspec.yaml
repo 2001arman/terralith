@@ -20,10 +20,13 @@ dependencies:
   auto_size_text: ^3.0.0
   syncfusion_flutter_pdfviewer: ^27.2.5
 
+  flutter_native_splash: ^2.4.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  icons_launcher: ^2.1.7
 
 flutter:
   uses-material-design: true
@@ -35,3 +38,25 @@ flutter:
     - assets/avatars/
     - assets/materi/
     - assets/materi/pdf/
+
+flutter_native_splash:
+  color: "#001F3F"
+  image: assets/logo.png
+  branding: assets/TERRALITH.png
+  branding_bottom_padding: 34
+
+  android_12:
+    image: assets/logo.png
+    color: "#001F3F"
+
+
+icons_launcher:
+  platforms:
+    android:
+      enable: true
+      image_path: "assets/logo_icon_app.png"
+      adaptive_foreground_image: "assets/ic_foreground.png"
+      adaptive_background_image: "assets/ic_background.png"
+    ios:
+      enable: true
+      image_path: "assets/logo_icon_app.png"
