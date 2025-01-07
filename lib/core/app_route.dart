@@ -15,6 +15,7 @@ import 'package:terralith/features/presentation/main/materi/quiz/quiz_result/qui
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_binding.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_ui.dart';
+import 'package:terralith/features/presentation/main/pengembang/pengembang_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_binding.dart';
@@ -86,6 +87,10 @@ class AppRoute {
       name: QuizResultUi.namePath,
       page: () => QuizResultUi(),
       binding: QuizResultBinding(),
+    ),
+    GetPage(
+      name: PengembangUi.namePath,
+      page: () => const PengembangUi(),
     ),
   ];
 }
