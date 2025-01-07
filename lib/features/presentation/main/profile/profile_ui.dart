@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:terralith/features/presentation/auth/login/login_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_logic.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_ui.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
@@ -167,7 +168,7 @@ class ProfileUi extends StatelessWidget {
             containerMenuItem(
               icon: 'assets/icons/logout.png',
               title: 'Keluar',
-              onTap: () {},
+              onTap: () => Get.offAllNamed(LoginUi.namePath),
             ),
           ],
         ),
