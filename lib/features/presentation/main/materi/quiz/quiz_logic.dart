@@ -24,6 +24,12 @@ class QuizLogic extends GetxController {
     super.dispose();
   }
 
+  @override
+  void onClose() {
+    _timer?.cancel();
+    super.onClose();
+  }
+
   void startTimer() {
     if (_timer != null) {
       _timer!.cancel(); // Cancel any existing timer

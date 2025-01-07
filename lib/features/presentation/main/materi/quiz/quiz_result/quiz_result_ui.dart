@@ -143,47 +143,47 @@ class QuizResultUi extends StatelessWidget {
           SizedBox(
             width: Get.width,
             height: Get.height,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 40 + MediaQuery.of(context).padding.top),
-                  Text(
-                    'Selamat !!!',
-                    style: blackTextStyle.copyWith(
-                        fontSize: 32, fontWeight: extraBold),
+            child: Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).padding.top),
+                const Spacer(),
+                Text(
+                  'Selamat !!!',
+                  style: blackTextStyle.copyWith(
+                      fontSize: 32, fontWeight: extraBold),
+                ),
+                Text(
+                  "Kamu baru saja menyelesaikan\nKuis ${logic.result.title}",
+                  style: darkBoldBlueTextStyle.copyWith(
+                    fontWeight: semiBold,
+                    color: const Color(0xFF3A6D8C),
                   ),
-                  Text(
-                    "Kamu baru saja menyelesaikan\nKuis ${logic.result.title}",
-                    style: darkBoldBlueTextStyle.copyWith(
-                      fontWeight: semiBold,
-                      color: const Color(0xFF3A6D8C),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                Image.asset(
+                  'assets/images/quiz-result.png',
+                  width: 220,
+                ),
+                const SizedBox(height: 8),
+                cardWidget(),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    buttonIconWidget(
+                      icon: 'assets/icons/ulangi.png',
+                      onTap: logic.ulangiTest,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 10),
-                  Image.asset(
-                    'assets/images/quiz-result.png',
-                    width: 220,
-                  ),
-                  const SizedBox(height: 10),
-                  cardWidget(),
-                  const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      buttonIconWidget(
-                        icon: 'assets/icons/ulangi.png',
-                        onTap: logic.ulangiTest,
-                      ),
-                      const SizedBox(width: 18),
-                      buttonIconWidget(
-                        icon: 'assets/icons/home.png',
-                        onTap: logic.getBackHome,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    const SizedBox(width: 18),
+                    buttonIconWidget(
+                      icon: 'assets/icons/home.png',
+                      onTap: logic.getBackHome,
+                    ),
+                  ],
+                ),
+                const Spacer(),
+              ],
             ),
           ),
         ],

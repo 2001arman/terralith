@@ -1,5 +1,6 @@
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
+import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 import 'package:terralith/features/presentation/main/pengembang/pengembang_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_ui.dart';
@@ -24,7 +25,7 @@ class MainState {
     HomeItemModel(
       name: 'Evaluasi Akhir',
       icon: 'assets/icons/evaluasi-akhir.png',
-      path: ProfileUi.namePath,
+      path: QuizUi.namePath,
     ),
     HomeItemModel(
       name: 'Profil',

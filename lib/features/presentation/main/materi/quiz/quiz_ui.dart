@@ -147,7 +147,7 @@ class QuizUi extends StatelessWidget {
     // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        return true;
+        return false;
       },
       child: Scaffold(
         backgroundColor: kWhiteColor,
@@ -155,7 +155,7 @@ class QuizUi extends StatelessWidget {
           iconTheme: IconThemeData(color: kBlueColor),
           backgroundColor: kBlueSemiLightColor,
           shadowColor: kBlackColor.withOpacity(0.25),
-          automaticallyImplyLeading: true,
+          automaticallyImplyLeading: false,
           title: Text(
             'Kuis Tenaga Geologi',
             style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
