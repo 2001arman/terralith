@@ -99,11 +99,29 @@ class ProfileUi extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: logic.showChangeAvatar,
-              child: Obx(
-                () => Image.asset(
-                  state.activeAvatar.value,
-                  width: 130,
-                  height: 130,
+              child: SizedBox(
+                width: 130,
+                height: 130,
+                child: Stack(
+                  children: [
+                    Obx(
+                      () => Image.asset(
+                        state.activeAvatar.value,
+                        width: 130,
+                        height: 130,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/icons/change-avatar.png',
+                          width: 25,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -139,7 +157,7 @@ class ProfileUi extends StatelessWidget {
             containerMenuItem(
               icon: 'assets/icons/user.png',
               title: 'Ubah Profil',
-              onTap: () {},
+              onTap: logic.ubahProfileDialog,
             ),
             containerMenuItem(
               icon: 'assets/icons/statistik.png',

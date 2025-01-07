@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import '../constants/constants_ui.dart';
 
 class CustomMainButton extends StatelessWidget {
-  const CustomMainButton({
-    super.key,
-    required this.title,
-    this.fontWeight,
-    this.fontSize = 14,
-    required this.onTap,
-  });
+  const CustomMainButton(
+      {super.key,
+      required this.title,
+      this.fontWeight,
+      this.fontSize = 14,
+      required this.onTap,
+      this.height = 45});
   final String title;
   final FontWeight? fontWeight;
   final double fontSize;
   final VoidCallback onTap;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CustomMainButton extends StatelessWidget {
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 4),
-        height: 45,
+        height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: kMainColor,

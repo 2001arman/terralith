@@ -3,8 +3,96 @@ import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 
+import '../../../../utility/shared/widgets/custom_main_button.dart';
+
 class ProfileLogic extends GetxController {
   ProfileState state = ProfileState();
+
+  Widget textFormWidget({
+    required String title,
+    required String value,
+    bool isReadOnly = false,
+    bool isPassword = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: blueTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 4),
+          decoration: BoxDecoration(
+            color: kWhiteColor,
+            boxShadow: [defaultBoxShadow],
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: TextFormField(
+            controller: TextEditingController(text: value),
+            style: mainTextStyle.copyWith(
+              fontWeight: bold,
+              fontSize: 16,
+            ),
+            obscureText: isPassword,
+            readOnly: isReadOnly,
+            textAlignVertical: TextAlignVertical.center,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.only(left: 12),
+              suffixIcon: Icon(
+                Icons.edit_outlined,
+                color: kBlueColor,
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  void ubahProfileDialog() {
+    Get.bottomSheet(
+      Container(
+        width: double.infinity,
+        height: 500,
+        padding: const EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          color: kBlueSemiLightColor,
+          borderRadius: const BorderRadius.only(
+            topRight: Radius.circular(35),
+            topLeft: Radius.circular(35),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            textFormWidget(title: 'Nama', value: 'Arman Maulana'),
+            const SizedBox(height: 12),
+            textFormWidget(
+              title: 'Nama Pengguna',
+              value: 'armanmaulana07',
+              isReadOnly: true,
+            ),
+            const SizedBox(height: 12),
+            textFormWidget(
+              title: 'Kata Sandi',
+              value: 'Arman Maulana',
+              isPassword: true,
+            ),
+            const SizedBox(height: 40),
+            CustomMainButton(
+              title: 'Simpan',
+              fontWeight: bold,
+              fontSize: 16,
+              onTap: Get.back,
+              height: 50,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   void showChangeAvatar() {
     Get.bottomSheet(
