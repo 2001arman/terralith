@@ -1,12 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 
 import '../../../../utility/shared/widgets/custom_main_button.dart';
+import '../../auth/login/login_ui.dart';
 
 class ProfileLogic extends GetxController {
   ProfileState state = ProfileState();
+
+  void logout() {
+    FirebaseAuth.instance.signOut();
+    Get.offAllNamed(LoginUi.namePath);
+  }
 
   Widget textFormWidget({
     required String title,
