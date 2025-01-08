@@ -32,9 +32,9 @@ target 'Runner' do
   use_modular_headers!
 
   # firebase
-  pod 'FirebaseFirestore',
-    :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git',
-    :tag => '10.29.0'
+  # pod 'FirebaseFirestore',
+  #   :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git',
+  #   :tag => '10.29.0'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
   target 'RunnerTests' do

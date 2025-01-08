@@ -24,10 +24,17 @@ import 'package:terralith/features/presentation/main/video/video_binding.dart';
 import 'package:terralith/features/presentation/main/video/video_detail/video_detail_binding.dart';
 import 'package:terralith/features/presentation/main/video/video_detail/video_detail_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_ui.dart';
+import 'package:terralith/features/presentation/splash_screen/splash_screen_binding.dart';
+import 'package:terralith/features/presentation/splash_screen/splash_screen_ui.dart';
 
 class AppRoute {
-  static const String initialRoute = LoginUi.namePath;
+  static const String initialRoute = SplashScreenUi.namePath;
   static final routes = [
+    GetPage(
+      name: SplashScreenUi.namePath,
+      page: () => SplashScreenUi(),
+      binding: SplashScreenBinding(),
+    ),
     GetPage(
       name: UsernameUi.namePath,
       page: () => const UsernameUi(),
