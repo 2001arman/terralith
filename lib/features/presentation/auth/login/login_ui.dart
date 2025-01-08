@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/auth/login/login_logic.dart';
-import 'package:terralith/features/presentation/auth/username/username_ui.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 import 'package:terralith/utility/shared/widgets/custom_text_form_field.dart';
 
@@ -52,12 +51,12 @@ class LoginUi extends StatelessWidget {
                     ),
                     const SizedBox(height: 36),
                     CustomTextFormField(
-                      controller: TextEditingController(text: 'armanmaulana07'),
-                      title: 'Nama Pengguna',
+                      controller: logic.emailController,
+                      title: 'Email',
                       backgroundColor: kTextFormColor,
                     ),
                     CustomTextFormField(
-                      controller: TextEditingController(text: 'armanmaulana07'),
+                      controller: logic.passwordController,
                       title: 'Kata Sandi',
                       isPassword: true,
                     ),
@@ -66,7 +65,7 @@ class LoginUi extends StatelessWidget {
                       title: 'Masuk',
                       fontWeight: bold,
                       fontSize: 16,
-                      onTap: () => Get.toNamed(UsernameUi.namePath),
+                      onTap: logic.login,
                     ),
                   ],
                 ),
