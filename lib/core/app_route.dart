@@ -37,7 +37,7 @@ class AppRoute {
     ),
     GetPage(
       name: UsernameUi.namePath,
-      page: () => const UsernameUi(),
+      page: () => UsernameUi(),
       binding: UsernameBinding(),
     ),
     GetPage(

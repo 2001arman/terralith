@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:terralith/features/presentation/main/main_ui.dart';
+import 'package:terralith/features/presentation/auth/username/username_logic.dart';
 import 'package:terralith/utility/shared/widgets/custom_main_button.dart';
 
 import '../../../../utility/shared/constants/constants_ui.dart';
@@ -8,7 +8,8 @@ import '../../../../utility/shared/widgets/custom_text_form_field.dart';
 
 class UsernameUi extends StatelessWidget {
   static const String namePath = '/username_page';
-  const UsernameUi({super.key});
+  final logic = Get.find<UsernameLogic>();
+  UsernameUi({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +50,12 @@ class UsernameUi extends StatelessWidget {
                   ),
                 ),
                 CustomTextFormField(
-                  controller: TextEditingController(
-                    text: 'Arman Maulana',
-                  ),
+                  controller: logic.usernameController,
                   textAlign: TextAlign.center,
                 ),
                 CustomMainButton(
                   title: 'Lanjutkan',
-                  onTap: () => Get.toNamed(MainUi.namePath),
+                  onTap: logic.updateName,
                 )
               ],
             ),
