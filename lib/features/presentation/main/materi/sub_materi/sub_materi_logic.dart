@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:terralith/features/domain/materi/materi_model.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 
 class SubMateriLogic extends GetxController {
   final SubMateriState state = SubMateriState();
+
+  late List<SubMateriModel> subMateri;
+
+  @override
+  void onInit() {
+    subMateri = Get.arguments[0];
+    super.onInit();
+  }
 
   Widget button({
     required String title,

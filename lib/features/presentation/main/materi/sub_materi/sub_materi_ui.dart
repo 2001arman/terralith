@@ -142,33 +142,22 @@ class SubMateriUi extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 25),
         children: [
-          itemContainer(
-            prefix: Text(
-              '1',
-              style: blueTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
-            ),
-            title: 'Pengertian Litosfer',
-            content: progressLinearWidget(),
-            onTap: () => Get.to(const DetailMateriUi()),
-          ),
-          itemContainer(
-            prefix: Text(
-              '2',
-              style: blueTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
-            ),
-            title: 'Siklus Batuan',
-            content: progressLinearWidget(),
-            onTap: () => Get.to(const DetailMateriUi()),
-          ),
-          itemContainer(
-            prefix: Text(
-              '3',
-              style: blueTextStyle.copyWith(fontWeight: semiBold, fontSize: 24),
-            ),
-            title: 'Mineral',
-            content: progressLinearWidget(),
-            onTap: () => Get.to(const DetailMateriUi()),
-          ),
+          ...logic.subMateri.asMap().entries.map(
+                (data) => itemContainer(
+                  prefix: Text(
+                    "${data.key + 1}",
+                    style: blueTextStyle.copyWith(
+                        fontWeight: semiBold, fontSize: 24),
+                  ),
+                  title: data.value.title,
+                  content: progressLinearWidget(),
+                  onTap: () => Get.to(
+                    () => DetailMateriUi(
+                      asset: data.value.asset,
+                    ),
+                  ),
+                ),
+              ),
           itemContainer(
             prefix: Padding(
               padding: const EdgeInsets.all(16),

@@ -4,7 +4,8 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../../../../utility/shared/constants/constants_ui.dart';
 
 class DetailMateriUi extends StatefulWidget {
-  const DetailMateriUi({super.key});
+  final String asset;
+  const DetailMateriUi({super.key, required this.asset});
 
   @override
   State<DetailMateriUi> createState() => _DetailMateriUiState();
@@ -26,37 +27,12 @@ class _DetailMateriUiState extends State<DetailMateriUi> {
         ),
         centerTitle: true,
       ),
-
       body: SfPdfViewer.asset(
-        'assets/materi/pdf/materi.pdf',
+        "assets/materi/pdf/${widget.asset}",
         pageSpacing: 1,
         pageLayoutMode: PdfPageLayoutMode.continuous,
         controller: controller,
       ),
-      // body: Padding(
-      //   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-      //   child: HtmlWidget(
-      //     '''
-      // <img src="https://lh3.googleusercontent.com/d/10dNAby7g6voInsYu19GaNdRYFHIqksLs=w1000?authuser=1/view" alt="" />
-      // <p>Litosfer ini berasal dari kata litos artinya batu, sfer = sphaira artinya bulatan/lapisan. Litosfer merupakan lapisan batuan/kulit bumi yang mengikuti bentuk bumi yang bulat dengan ketebalan kurang lebih 1.200 km. Jadi litosfer adalah lapisan bumi paling luar yang paling luas dan paling tipis, karena itulah lapisan ini sering dinamakan dengan kerak bumi. Tebal kulit bumi tidak merata, kulit bumi di bagian benua atau daratan lebih tebal dari bagian samudra.</p>
-      // ''',
-      //     customStylesBuilder: (element) {
-      //       if (element.localName == 'h1') {
-      //         return {
-      //           'color': '#769FCD',
-      //           'font-size': '24px',
-      //         };
-      //       }
-      //       if (element.localName == 'li') {
-      //         return {'font-size': '14px'};
-      //       }
-      //       return {
-      //         'text-align': 'justify',
-      //       };
-      //     },
-      //     textStyle: blackTextStyle,
-      //   ),
-      // ),
     );
   }
 }
