@@ -11,12 +11,14 @@ class ContainerTextFormField extends StatelessWidget {
     this.isPassword = false,
     this.showEditIcon = true,
     this.color,
+    this.validator,
   });
 
   final String title;
   final TextEditingController controller;
   final bool isReadOnly, isPassword, showEditIcon;
   final Color? color;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class ContainerTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           child: TextFormField(
+            validator: validator,
             controller: controller,
             style: mainTextStyle.copyWith(
               fontWeight: bold,

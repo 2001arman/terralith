@@ -84,4 +84,16 @@ class AuthDataSource implements AuthRepositoryBase {
       return Left(e);
     }
   }
+
+  @override
+  Future<Either<FirebaseException, bool>> updatePassword({
+    required String newPassword,
+  }) async {
+    try {
+      await auth.currentUser?.updatePassword(newPassword);
+      return const Right(true);
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
 }

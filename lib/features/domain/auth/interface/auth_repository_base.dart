@@ -14,4 +14,7 @@ abstract class AuthRepositoryBase {
   });
 
   Future<Either<FirebaseException, bool>> sendOTP();
+  Future<Either<FirebaseException, bool>> updatePassword({
+    required String newPassword,
+  });
 }

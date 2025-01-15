@@ -27,30 +27,39 @@ class ChangePasswordUi extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 48),
-        child: Column(
-          children: [
-            ContainerTextFormField(
-              title: 'Masukkan Kata Sandi Baru',
-              controller: TextEditingController(text: 'Arman Maulana'),
-              showEditIcon: false,
-              color: kBlueSemiLightColor,
-              isPassword: true,
-            ),
-            const SizedBox(height: 20),
-            ContainerTextFormField(
-              title: 'Konfirmasi Kata Sandi',
-              controller: TextEditingController(text: 'Arman Maulana'),
-              showEditIcon: false,
-              color: kBlueSemiLightColor,
-              isPassword: true,
-            ),
-            const SizedBox(height: 40),
-            CustomMainButton(
-              title: 'Simpan',
-              onTap: () {},
-              color: kBlueColor,
-            ),
-          ],
+        child: Form(
+          key: logic.formKey,
+          child: Column(
+            children: [
+              ContainerTextFormField(
+                title: 'Masukkan Kata Sandi Baru',
+                controller: logic.passwordController,
+                showEditIcon: false,
+                color: kBlueSemiLightColor,
+                isPassword: true,
+              ),
+              const SizedBox(height: 20),
+              ContainerTextFormField(
+                title: 'Konfirmasi Kata Sandi',
+                controller: logic.confirmPasswordController,
+                showEditIcon: false,
+                color: kBlueSemiLightColor,
+                isPassword: true,
+                validator: (data) {
+                  if (data != logic.passwordController.text) {
+                    return 'Konfirmasi Kata Sandi Tidak Sesuai';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 40),
+              CustomMainButton(
+                title: 'Simpan',
+                onTap: logic.updatePassword,
+                color: kBlueColor,
+              ),
+            ],
+          ),
         ),
       ),
     );

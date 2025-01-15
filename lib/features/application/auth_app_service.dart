@@ -21,4 +21,9 @@ class AuthAppService {
       _repository.updateUserName(name: name);
 
   Future<Either<FirebaseException, bool>> sendOTP() => _repository.sendOTP();
+
+  Future<Either<FirebaseException, bool>> updatePassword({
+    required String newPassword,
+  }) =>
+      _repository.updatePassword(newPassword: newPassword);
 }
