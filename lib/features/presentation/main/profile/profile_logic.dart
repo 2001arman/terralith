@@ -4,15 +4,25 @@ import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 import 'package:terralith/utility/shared/widgets/container_text_form_field.dart';
+import 'package:terralith/utility/utils/global_variable.dart';
 
 import '../../../../utility/shared/widgets/custom_main_button.dart';
 import '../../auth/login/login_ui.dart';
 
 class ProfileLogic extends GetxController {
+  final GlobalVariable globalVariable = Get.find<GlobalVariable>();
+  final firebase = FirebaseAuth.instance;
   ProfileState state = ProfileState();
 
+  @override
+  void onInit() {
+    String avatar = globalVariable.userData.value!.avatar;
+    state.activeAvatar.value = avatar;
+    super.onInit();
+  }
+
   void logout() {
-    FirebaseAuth.instance.signOut();
+    firebase.signOut();
     Get.offAllNamed(LoginUi.namePath);
   }
 
@@ -34,7 +44,8 @@ class ProfileLogic extends GetxController {
           children: [
             ContainerTextFormField(
               title: 'Nama',
-              controller: TextEditingController(text: 'Arman Maulana'),
+              controller: TextEditingController(
+                  text: globalVariable.userData.value!.name),
             ),
             const SizedBox(height: 12),
             ContainerTextFormField(
@@ -59,6 +70,8 @@ class ProfileLogic extends GetxController {
   }
 
   void showChangeAvatar() {
+    state.selectedAvatarIndex.value = state.availableAvatar
+        .indexWhere((data) => data == state.activeAvatar.value);
     Get.bottomSheet(
       Container(
         width: double.infinity,
@@ -92,7 +105,7 @@ class ProfileLogic extends GetxController {
                             )
                           : null,
                       child: Image.asset(
-                        state.availableAvatar[index],
+                        'assets/avatars/${state.availableAvatar[index]}',
                       ),
                     ),
                   ),
@@ -104,6 +117,9 @@ class ProfileLogic extends GetxController {
                 Get.back();
                 state.activeAvatar.value =
                     state.availableAvatar[state.selectedAvatarIndex.value];
+                globalVariable.userData.value!.avatar =
+                    state.activeAvatar.value;
+                globalVariable.userData.refresh();
               },
               child: Container(
                 width: 50,

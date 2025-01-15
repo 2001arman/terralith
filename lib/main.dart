@@ -8,6 +8,8 @@ import 'package:terralith/core/app_route.dart';
 import 'package:terralith/features/presentation/auth/username/username_binding.dart';
 import 'package:terralith/firebase_options.dart';
 
+import 'utility/utils/global_variable.dart';
+
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
@@ -16,6 +18,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await initializeDateFormatting('id_ID', null);
+  await Get.putAsync(() => GlobalVariable().init(), permanent: true);
 
   FlutterNativeSplash.remove();
   runApp(const MainApp());

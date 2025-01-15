@@ -38,17 +38,23 @@ class MainUi extends StatelessWidget {
                           'Selamat Datang, ',
                           style: whiteTextStyle.copyWith(fontSize: 13),
                         ),
-                        Text(
-                          'Arman Maulana !',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 20,
-                            fontWeight: extraBold,
+                        Obx(
+                          () => Text(
+                            '${logic.globalVariable.userData.value?.name ?? ''} !',
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 20,
+                              fontWeight: extraBold,
+                            ),
                           ),
                         ),
                       ],
                     ),
                     const Spacer(),
-                    Image.asset('assets/avatars/8.png', width: 46),
+                    Obx(
+                      () => Image.asset(
+                          'assets/avatars/${logic.globalVariable.userData.value?.avatar ?? '1.png'}',
+                          width: 46),
+                    ),
                   ],
                 ),
               ),

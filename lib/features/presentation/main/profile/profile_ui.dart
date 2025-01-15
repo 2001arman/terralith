@@ -107,7 +107,7 @@ class ProfileUi extends StatelessWidget {
                   children: [
                     Obx(
                       () => Image.asset(
-                        state.activeAvatar.value,
+                        'assets/avatars/${state.activeAvatar.value}',
                         width: 130,
                         height: 130,
                       ),
@@ -127,12 +127,12 @@ class ProfileUi extends StatelessWidget {
               ),
             ),
             Text(
-              'Arman Maulana',
+              logic.globalVariable.userData.value?.name ?? '',
               style:
                   blueTextStyle.copyWith(fontSize: 24, fontWeight: extraBold),
             ),
             Text(
-              'armanmaulana07',
+              logic.firebase.currentUser?.email ?? '',
               style: blueTextStyle.copyWith(fontSize: 16, fontWeight: light),
             ),
             const SizedBox(height: 23),
