@@ -88,7 +88,7 @@ class VideoDetailUi extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      logic.item.dateTime,
+                      logic.item.formattedDateTime,
                       style: blackTextStyle.copyWith(
                         fontSize: 12,
                         fontStyle: FontStyle.italic,
@@ -115,7 +115,7 @@ class VideoDetailUi extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     ...parentLogic.state.listYoutube
-                        .where((data) => data.id != logic.item.id)
+                        .where((data) => data.videoId != logic.item.videoId)
                         .map(
                           (data) => Container(
                             margin: const EdgeInsets.only(bottom: 12),
@@ -132,7 +132,7 @@ class VideoDetailUi extends StatelessWidget {
                                         color: kBlackColor,
                                         image: DecorationImage(
                                           image: NetworkImage(
-                                              'https://img.youtube.com/vi/${data.id}/0.jpg'),
+                                              'https://img.youtube.com/vi/${data.videoId}/0.jpg'),
                                           fit: BoxFit.fitWidth,
                                         ),
                                       ),

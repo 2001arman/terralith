@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import '../video_state.dart';
+import '../../../../domain/video/model/youtube_item_model.dart';
 import 'video_detail_ui.dart';
 
 class VideoDetailLogic extends GetxController {
@@ -12,7 +12,7 @@ class VideoDetailLogic extends GetxController {
   void onInit() {
     item = Get.arguments['item'];
     youtubeController = YoutubePlayerController(
-      initialVideoId: item.id,
+      initialVideoId: item.videoId,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
