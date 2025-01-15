@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
+import 'package:terralith/utility/shared/widgets/container_text_form_field.dart';
 
 import '../../../../utility/shared/widgets/custom_main_button.dart';
 import '../../auth/login/login_ui.dart';
@@ -13,49 +14,6 @@ class ProfileLogic extends GetxController {
   void logout() {
     FirebaseAuth.instance.signOut();
     Get.offAllNamed(LoginUi.namePath);
-  }
-
-  Widget textFormWidget({
-    required String title,
-    required String value,
-    bool isReadOnly = false,
-    bool isPassword = false,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: blueTextStyle.copyWith(fontSize: 16, fontWeight: medium),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 4),
-          decoration: BoxDecoration(
-            color: kWhiteColor,
-            boxShadow: [defaultBoxShadow],
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: TextFormField(
-            controller: TextEditingController(text: value),
-            style: mainTextStyle.copyWith(
-              fontWeight: bold,
-              fontSize: 16,
-            ),
-            obscureText: isPassword,
-            readOnly: isReadOnly,
-            textAlignVertical: TextAlignVertical.center,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: const EdgeInsets.only(left: 12),
-              suffixIcon: Icon(
-                Icons.edit_outlined,
-                color: kBlueColor,
-              ),
-            ),
-          ),
-        )
-      ],
-    );
   }
 
   void ubahProfileDialog() {
@@ -74,18 +32,17 @@ class ProfileLogic extends GetxController {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            textFormWidget(title: 'Nama', value: 'Arman Maulana'),
-            const SizedBox(height: 12),
-            textFormWidget(
-              title: 'Nama Pengguna',
-              value: 'armanmaulana07',
-              isReadOnly: true,
+            ContainerTextFormField(
+              title: 'Nama',
+              controller: TextEditingController(text: 'Arman Maulana'),
             ),
             const SizedBox(height: 12),
-            textFormWidget(
-              title: 'Kata Sandi',
-              value: 'Arman Maulana',
-              isPassword: true,
+            ContainerTextFormField(
+              title: 'Alamat Email',
+              controller:
+                  TextEditingController(text: '2001armanmaulana@gmail.com'),
+              isReadOnly: true,
+              showEditIcon: false,
             ),
             const SizedBox(height: 40),
             CustomMainButton(

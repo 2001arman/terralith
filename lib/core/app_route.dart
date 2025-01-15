@@ -16,10 +16,14 @@ import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_binding.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_ui.dart';
 import 'package:terralith/features/presentation/main/pengembang/pengembang_ui.dart';
+import 'package:terralith/features/presentation/main/profile/change-password/change_password_binding.dart';
+import 'package:terralith/features/presentation/main/profile/change-password/change_password_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_binding.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_binding.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_ui.dart';
+import 'package:terralith/features/presentation/main/profile/verifikasi/verifikasi_binding.dart';
+import 'package:terralith/features/presentation/main/profile/verifikasi/verifikasi_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_binding.dart';
 import 'package:terralith/features/presentation/main/video/video_detail/video_detail_binding.dart';
 import 'package:terralith/features/presentation/main/video/video_detail/video_detail_ui.dart';
@@ -98,6 +102,16 @@ class AppRoute {
     GetPage(
       name: PengembangUi.namePath,
       page: () => const PengembangUi(),
+    ),
+    GetPage(
+      name: VerifikasiUi.namePath,
+      page: () => VerifikasiUi(),
+      binding: VerifikasiBinding(),
+    ),
+    GetPage(
+      name: ChangePasswordUi.namePath,
+      page: () => ChangePasswordUi(),
+      binding: ChangePasswordBinding(),
     ),
   ];
 }

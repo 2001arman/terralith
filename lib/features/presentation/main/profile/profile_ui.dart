@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_logic.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_ui.dart';
+import 'package:terralith/features/presentation/main/profile/verifikasi/verifikasi_ui.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 
 class ProfileUi extends StatelessWidget {
@@ -158,6 +159,11 @@ class ProfileUi extends StatelessWidget {
               icon: 'assets/icons/user.png',
               title: 'Ubah Profil',
               onTap: logic.ubahProfileDialog,
+            ),
+            containerMenuItem(
+              icon: 'assets/icons/lock.png',
+              title: 'Ubah Kata Sandi',
+              onTap: () => Get.toNamed(VerifikasiUi.namePath),
             ),
             containerMenuItem(
               icon: 'assets/icons/statistik.png',

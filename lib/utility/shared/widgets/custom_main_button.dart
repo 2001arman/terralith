@@ -3,18 +3,21 @@ import 'package:flutter/material.dart';
 import '../constants/constants_ui.dart';
 
 class CustomMainButton extends StatelessWidget {
-  const CustomMainButton(
-      {super.key,
-      required this.title,
-      this.fontWeight,
-      this.fontSize = 14,
-      required this.onTap,
-      this.height = 45});
+  const CustomMainButton({
+    super.key,
+    required this.title,
+    this.fontWeight,
+    this.fontSize = 14,
+    required this.onTap,
+    this.height = 45,
+    this.color,
+  });
   final String title;
   final FontWeight? fontWeight;
   final double fontSize;
   final VoidCallback onTap;
   final double height;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class CustomMainButton extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: kMainColor,
+          color: color ?? kMainColor,
           boxShadow: [
             BoxShadow(
               offset: const Offset(0, 4),
