@@ -74,4 +74,14 @@ class AuthDataSource implements AuthRepositoryBase {
       return Left(e);
     }
   }
+
+  @override
+  Future<Either<FirebaseException, bool>> sendOTP() async {
+    try {
+      await auth.sendPasswordResetEmail(email: auth.currentUser?.email ?? '');
+      return const Right(true);
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
 }

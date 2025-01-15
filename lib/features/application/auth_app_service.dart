@@ -19,4 +19,6 @@ class AuthAppService {
   Future<Either<FirebaseException, bool>> updateUserName(
           {required String name}) =>
       _repository.updateUserName(name: name);
+
+  Future<Either<FirebaseException, bool>> sendOTP() => _repository.sendOTP();
 }
