@@ -9,7 +9,7 @@ class VideoDataSource implements VideoRepositoryBase {
   @override
   Future<Either<FirebaseException, List<YoutubeItemModel>>> getVideos() async {
     try {
-      final data = await db.collection('videos').get();
+      final data = await db.collection('videos').orderBy('index').get();
 
       if (data.docs.isEmpty) {
         return Left(
