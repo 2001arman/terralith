@@ -156,6 +156,13 @@ class VideoDetailUi extends StatelessWidget {
                                         style: blackTextStyle.copyWith(
                                             fontWeight: medium, fontSize: 13),
                                       ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        data.formattedDateTime,
+                                        style: blackTextStyle.copyWith(
+                                            fontSize: 10, fontWeight: light),
+                                        textAlign: TextAlign.justify,
+                                      )
                                     ],
                                   ),
                                 ),
