@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/statistic/statistic_logic.dart';
 
 import '../../../../../utility/shared/constants/constants_ui.dart';
+import '../../../../domain/quiz/model/quiz_result_model.dart';
 
 class StatisticUi extends StatelessWidget {
   static const String namePath = '/statistic_page';
@@ -47,7 +48,8 @@ class StatisticUi extends StatelessWidget {
       );
     }
 
-    Widget quizPoinWidget() {
+    Widget quizPoinWidget(
+        {required int index, required QuizResultModel result}) {
       return Container(
         width: double.infinity,
         height: 91,
@@ -74,7 +76,7 @@ class StatisticUi extends StatelessWidget {
                     style: whiteTextStyle.copyWith(fontWeight: medium),
                   ),
                   Text(
-                    '1',
+                    '$index',
                     style: whiteTextStyle.copyWith(
                         fontWeight: bold, fontSize: 24, height: 24 / 24),
                   ),
@@ -93,7 +95,7 @@ class StatisticUi extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '80',
+                    '${result.point}',
                     style: whiteTextStyle.copyWith(
                         fontWeight: bold, fontSize: 24, height: 24 / 24),
                   ),
@@ -116,7 +118,7 @@ class StatisticUi extends StatelessWidget {
                       height: 30,
                     ),
                     Text(
-                      '8 soal',
+                      '${result.benar} soal',
                       style: blueTextStyle.copyWith(fontWeight: medium),
                     ),
                   ],
@@ -129,7 +131,7 @@ class StatisticUi extends StatelessWidget {
                       height: 30,
                     ),
                     Text(
-                      '2 soal',
+                      '${result.benar} soal',
                       style: blueTextStyle.copyWith(fontWeight: medium),
                     ),
                   ],
@@ -264,32 +266,36 @@ class StatisticUi extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-        children: [
-          // top item
-          Row(
-            children: [
-              topItemWidget(
-                icon: 'assets/icons/statistic-materi.png',
-                title: 'Materi',
-                value: '11',
-              ),
-              const SizedBox(width: 20),
-              topItemWidget(
-                icon: 'assets/icons/statistic-done.png',
-                title: 'Selesai',
-                value: '7',
-              ),
-            ],
-          ),
-          // quiz poin item
-          quizPoinWidget(),
-          quizPoinWidget(),
-          quizPoinWidget(),
-          quizPoinWidget(),
-          evaluasiWidget(),
-        ],
+      body: Obx(
+        () => ListView(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+          children: [
+            // top item
+            Row(
+              children: [
+                topItemWidget(
+                  icon: 'assets/icons/statistic-materi.png',
+                  title: 'Materi',
+                  value: '10',
+                ),
+                const SizedBox(width: 20),
+                topItemWidget(
+                  icon: 'assets/icons/statistic-done.png',
+                  title: 'Selesai',
+                  value: '7',
+                ),
+              ],
+            ),
+            // quiz poin item
+            ...state.quizResult.asMap().entries.map(
+                  (data) => quizPoinWidget(
+                    index: data.key + 1,
+                    result: data.value,
+                  ),
+                ),
+            evaluasiWidget(),
+          ],
+        ),
       ),
     );
   }
