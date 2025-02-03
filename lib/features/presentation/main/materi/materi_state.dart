@@ -1,4 +1,4 @@
-import '../../../domain/materi/materi_model.dart';
+import '../../../domain/materi/model/materi_model.dart';
 
 class MateriState {
   final List<MateriModel> listMateri = [
