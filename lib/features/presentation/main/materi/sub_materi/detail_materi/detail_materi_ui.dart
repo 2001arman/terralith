@@ -4,8 +4,12 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../../../../../../utility/shared/constants/constants_ui.dart';
 
 class DetailMateriUi extends StatefulWidget {
-  final String asset;
-  const DetailMateriUi({super.key, required this.asset});
+  final String asset, title;
+  const DetailMateriUi({
+    super.key,
+    required this.asset,
+    required this.title,
+  });
 
   @override
   State<DetailMateriUi> createState() => _DetailMateriUiState();
@@ -22,7 +26,7 @@ class _DetailMateriUiState extends State<DetailMateriUi> {
         backgroundColor: kBlueSemiLightColor,
         shadowColor: kBlackColor.withOpacity(0.25),
         title: Text(
-          'Litosfer',
+          widget.title,
           style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
         ),
         centerTitle: true,

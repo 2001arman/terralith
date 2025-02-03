@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:terralith/features/domain/quiz/quiz_result_model.dart';
+import 'package:terralith/features/domain/quiz/model/quiz_result_model.dart';
 import 'package:terralith/features/presentation/main/main_ui.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 
@@ -21,6 +21,9 @@ class QuizResultLogic extends GetxController {
   }
 
   void ulangiTest() {
-    Get.offAndToNamed(QuizUi.namePath);
+    Get.offAndToNamed(
+      QuizUi.namePath,
+      arguments: [Get.arguments[1]],
+    );
   }
 }

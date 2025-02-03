@@ -4,35 +4,11 @@ class QuizState {
   var activeSoal = 0.obs;
   var selectedJawaban = Rxn<String>();
   var poin = 0.obs;
-  var remainingTime = 10.obs; // 5 minutes in seconds
+  var remainingTime = 300.obs; // 5 minutes in seconds
   int soalBenar = 0;
   int soalSalah = 0;
 
-  List<QuizModel> quizList = [
-    QuizModel(
-      soal:
-          'Pantai Stockholm selalu mengalami kenaikan permukaan, dengan naik rata-rata 1m/100 tahun. Gerakan naiknya permukaan diakibatkan oleh gerak....',
-      jawaban: [
-        'Epirogenetik Positif',
-        'Epirogenetik Negatif',
-        'Orogenetik Positif',
-        'Orogenetik Negatif',
-        'Epirogenetik dan Orogenetik',
-      ],
-      jawabanBenar: 'Epirogenetik Negatif',
-    ),
-    QuizModel(
-      soal: 'Siapa cowo paling ganteng di dunia ini?',
-      jawaban: [
-        'Mulyono',
-        'Mulyadi',
-        'Arman Maulana',
-        'Tata Azkia',
-        'Budiono Siregar',
-      ],
-      jawabanBenar: 'Arman Maulana',
-    ),
-  ];
+  late List<QuizModel> quizList;
 
   List<String> alphabet = [
     'A',

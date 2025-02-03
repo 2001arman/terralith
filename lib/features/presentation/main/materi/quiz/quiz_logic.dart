@@ -2,18 +2,23 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:terralith/features/domain/quiz/quiz_result_model.dart';
+import 'package:terralith/features/application/quiz_app_service.dart';
+import 'package:terralith/features/domain/quiz/model/quiz_result_model.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_result/quiz_result_ui.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
 
 class QuizLogic extends GetxController {
+  final _appService = Get.find<QuizAppService>();
   final QuizState state = QuizState();
 
   Timer? _timer;
+  late String title;
 
   @override
   void onInit() {
+    title = Get.arguments[0];
+    state.quizList = _appService.getQuizData(materi: title);
     startTimer();
     super.onInit();
   }
@@ -53,18 +58,21 @@ class QuizLogic extends GetxController {
   void gotoResult() {
     _timer!.cancel();
     final result = QuizResultModel(
-        title: 'Tenaga Geologi',
+        title: title,
         benar: state.soalBenar,
         salah: state.soalSalah,
         point: state.poin.value);
-    Get.offAndToNamed(QuizResultUi.namePath, arguments: [result]);
+    Get.offAndToNamed(
+      QuizResultUi.namePath,
+      arguments: [result, title],
+    );
   }
 
   void nextSoal(bool benar) {
     if (Get.isDialogOpen == true) {
       Get.back();
       if (benar) {
-        state.poin += 10;
+        state.poin += 20;
         state.soalBenar++;
       } else {
         state.soalSalah++;
@@ -81,7 +89,7 @@ class QuizLogic extends GetxController {
   void checkSoalDialog() {
     String jawabanBenar = state.quizList[state.activeSoal.value].jawabanBenar;
     bool benar = state.selectedJawaban.value == jawabanBenar;
-    int poin = benar ? 10 : 0;
+    int poin = benar ? 20 : 0;
     Get.dialog(
       GestureDetector(
         onTap: () => nextSoal(benar),

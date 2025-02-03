@@ -8,11 +8,11 @@ import 'package:terralith/utility/shared/constants/constants_ui.dart';
 class SubMateriLogic extends GetxController {
   final SubMateriState state = SubMateriState();
 
-  late List<SubMateriModel> subMateri;
+  late MateriModel materi;
 
   @override
   void onInit() {
-    subMateri = Get.arguments[0];
+    materi = Get.arguments[0];
     super.onInit();
   }
 
@@ -94,7 +94,7 @@ class SubMateriLogic extends GetxController {
                     height: 20,
                   ),
                   Text(
-                    '10 butir',
+                    '5 butir',
                     style:
                         blueTextStyle.copyWith(fontSize: 13, fontWeight: bold),
                   ),
@@ -105,7 +105,7 @@ class SubMateriLogic extends GetxController {
                     height: 20,
                   ),
                   Text(
-                    '15 menit',
+                    '5 menit',
                     style:
                         blueTextStyle.copyWith(fontSize: 13, fontWeight: bold),
                   ),
@@ -128,7 +128,10 @@ class SubMateriLogic extends GetxController {
                     textColor: kWhiteColor,
                     onTap: () {
                       Get.back();
-                      Get.toNamed(QuizUi.namePath);
+                      Get.toNamed(
+                        QuizUi.namePath,
+                        arguments: [materi.title],
+                      );
                     },
                   ),
                 ],

@@ -102,7 +102,6 @@ class QuizUi extends StatelessWidget {
         child: Obx(
           () => Container(
             width: double.infinity,
-            height: 55,
             margin: const EdgeInsets.only(bottom: 10),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
@@ -157,7 +156,7 @@ class QuizUi extends StatelessWidget {
           shadowColor: kBlackColor.withOpacity(0.25),
           automaticallyImplyLeading: false,
           title: Text(
-            'Kuis Tenaga Geologi',
+            'Kuis ${logic.title}',
             style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
           ),
           centerTitle: true,

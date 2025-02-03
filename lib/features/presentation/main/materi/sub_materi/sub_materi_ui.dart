@@ -104,7 +104,7 @@ class SubMateriUi extends StatelessWidget {
                 style: blueTextStyle.copyWith(fontWeight: light, fontSize: 11),
               ),
               Text(
-                '10 butir',
+                '5 butir',
                 style:
                     blueTextStyle.copyWith(fontWeight: extraBold, fontSize: 11),
               ),
@@ -117,7 +117,7 @@ class SubMateriUi extends StatelessWidget {
                 style: blueTextStyle.copyWith(fontWeight: light, fontSize: 11),
               ),
               Text(
-                '15 menit',
+                '5 menit',
                 style:
                     blueTextStyle.copyWith(fontWeight: extraBold, fontSize: 11),
               ),
@@ -134,7 +134,7 @@ class SubMateriUi extends StatelessWidget {
         backgroundColor: kBlueSemiLightColor,
         shadowColor: kBlackColor.withOpacity(0.25),
         title: Text(
-          'Litosfer',
+          logic.materi.title,
           style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
         ),
         centerTitle: true,
@@ -142,7 +142,7 @@ class SubMateriUi extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 25),
         children: [
-          ...logic.subMateri.asMap().entries.map(
+          ...logic.materi.subMateri.asMap().entries.map(
                 (data) => itemContainer(
                   prefix: Text(
                     "${data.key + 1}",
@@ -153,6 +153,7 @@ class SubMateriUi extends StatelessWidget {
                   content: progressLinearWidget(),
                   onTap: () => Get.to(
                     () => DetailMateriUi(
+                      title: logic.materi.title,
                       asset: data.value.asset,
                     ),
                   ),
@@ -163,7 +164,7 @@ class SubMateriUi extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Image.asset('assets/icons/kuis.png'),
             ),
-            title: 'Kuis Batuan',
+            title: 'Kuis ${logic.materi.title}',
             titlePadding: 4,
             content: kuisInfoWidget(),
             onTap: logic.showQuizDialog,

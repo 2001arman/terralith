@@ -59,8 +59,8 @@ class MateriState {
           progress: 90,
         ),
         SubMateriModel(
-          title: 'Sendimenstasi',
-          asset: '3.4-Sendimentasi.pdf',
+          title: 'Sedimentasi',
+          asset: '3.4-Sedimentasi.pdf',
           progress: 90,
         ),
       ],

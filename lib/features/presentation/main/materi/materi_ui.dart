@@ -38,7 +38,7 @@ class MateriUi extends StatelessWidget {
           return GestureDetector(
             onTap: () => Get.toNamed(
               SubMateriUi.namePath,
-              arguments: [state.listMateri[index].subMateri],
+              arguments: [state.listMateri[index]],
             ),
             child: Container(
               height: 180,
