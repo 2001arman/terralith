@@ -153,6 +153,7 @@ class SubMateriUi extends StatelessWidget {
                   content: progressLinearWidget(),
                   onTap: () => Get.to(
                     () => DetailMateriUi(
+                      materi: logic.materi.title,
                       title: data.value.title,
                       asset: data.value.asset,
                     ),

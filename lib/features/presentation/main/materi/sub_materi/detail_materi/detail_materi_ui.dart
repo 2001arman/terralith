@@ -9,11 +9,12 @@ import 'package:terralith/features/application/materi_app_service.dart';
 import '../../../../../../utility/shared/constants/constants_ui.dart';
 
 class DetailMateriUi extends StatefulWidget {
-  final String asset, title;
+  final String asset, title, materi;
   const DetailMateriUi({
     super.key,
     required this.asset,
     required this.title,
+    required this.materi,
   });
 
   @override
@@ -52,7 +53,8 @@ class _DetailMateriUiState extends State<DetailMateriUi> {
   void recordProgress() async {
     EasyLoading.show();
     final data = await _appService.updateMateriProgress(
-      materi: widget.title,
+      materi: widget.materi,
+      subMateri: widget.title,
       progress: (invisiblePage / controller.pageCount) * 100,
     );
     EasyLoading.dismiss();

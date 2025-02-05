@@ -8,7 +8,12 @@ class MateriAppService {
 
   Future<Either<FirebaseException, bool>> updateMateriProgress({
     required String materi,
+    required String subMateri,
     required double progress,
   }) =>
-      _repository.updateMateriProgress(materi: materi, progress: progress);
+      _repository.updateMateriProgress(
+        materi: materi,
+        progress: progress,
+        subMateri: subMateri,
+      );
 }

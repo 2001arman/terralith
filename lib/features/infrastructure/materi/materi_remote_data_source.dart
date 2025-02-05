@@ -10,6 +10,7 @@ class MateriRemoteDataSource implements MateriRepositoryBase {
   @override
   Future<Either<FirebaseException, bool>> updateMateriProgress({
     required String materi,
+    required String subMateri,
     required double progress,
   }) async {
     try {
@@ -36,7 +37,7 @@ class MateriRemoteDataSource implements MateriRepositoryBase {
           .collection('users')
           .doc(userId)
           .collection('materi_progress')
-          .where('materi', isEqualTo: materi)
+          .where('sub_materi', isEqualTo: subMateri)
           .get();
 
       if (materiProgressQuery.docs.isNotEmpty) {
@@ -69,6 +70,7 @@ class MateriRemoteDataSource implements MateriRepositoryBase {
             .collection('materi_progress')
             .add({
           'materi': materi,
+          'sub_materi': subMateri,
           'progress': progress,
           'updated_at': DateTime.now(),
         });
