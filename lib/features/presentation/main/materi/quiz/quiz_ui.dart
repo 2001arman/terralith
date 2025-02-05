@@ -156,7 +156,7 @@ class QuizUi extends StatelessWidget {
           shadowColor: kBlackColor.withValues(alpha: 0.25),
           automaticallyImplyLeading: false,
           title: Text(
-            'Kuis ${logic.title}',
+            'Kuis ${logic.materiModel.title}',
             style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
           ),
           centerTitle: true,
@@ -170,7 +170,8 @@ class QuizUi extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   height: 45,
-                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  margin:
+                      const EdgeInsets.only(left: 30, right: 30, bottom: 20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: kDarkBlueColor,

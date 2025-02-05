@@ -4,11 +4,13 @@ class MateriModel {
   final String image;
   final String title;
   final List<SubMateriModel> subMateri;
+  final int quizNumber;
 
   MateriModel({
     required this.image,
     required this.title,
     required this.subMateri,
+    required this.quizNumber,
   });
 }
 

@@ -8,4 +8,7 @@ abstract class QuizRepositoryBase {
   List<QuizModel> getQuizData({required String materi});
 
   Future<Either<FirebaseException, List<QuizResultModel>>> getQuizResult();
+
+  Future<Either<FirebaseException, bool>> createQuizResult(
+      {required QuizResultModel quizResult});
 }

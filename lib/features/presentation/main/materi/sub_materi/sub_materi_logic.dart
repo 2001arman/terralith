@@ -177,7 +177,7 @@ class SubMateriLogic extends GetxController {
                       Get.back();
                       Get.toNamed(
                         QuizUi.namePath,
-                        arguments: [materi.title],
+                        arguments: [materi],
                       );
                     },
                   ),

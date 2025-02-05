@@ -7,6 +7,7 @@ class MateriState {
     MateriModel(
       image: 'assets/materi/litosfer.png',
       title: 'Litosfer',
+      quizNumber: 1,
       subMateri: [
         SubMateriModel(
           title: 'Pengertian Litosfer',
@@ -23,6 +24,7 @@ class MateriState {
     MateriModel(
       image: 'assets/materi/endogen.png',
       title: 'Tenaga Endogen',
+      quizNumber: 2,
       subMateri: [
         SubMateriModel(
           title: 'Tektonisme',
@@ -44,6 +46,7 @@ class MateriState {
     MateriModel(
       image: 'assets/materi/eksogen.png',
       title: 'Tenaga Eksogen',
+      quizNumber: 3,
       subMateri: [
         SubMateriModel(
           title: 'Pelapukan',
@@ -70,6 +73,7 @@ class MateriState {
     MateriModel(
       image: 'assets/materi/mitigasi.png',
       title: 'Risiko Bencana dan Mitigasinya',
+      quizNumber: 4,
       subMateri: [
         SubMateriModel(
           title: 'Risiko Bencana dan Mitigasinya',

@@ -92,90 +92,94 @@ class ProfileUi extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            GestureDetector(
-              onTap: logic.showChangeAvatar,
-              child: SizedBox(
-                width: 130,
-                height: 130,
-                child: Stack(
-                  children: [
-                    Obx(
-                      () => Image.asset(
-                        'assets/avatars/${state.activeAvatar.value}',
-                        width: 130,
-                        height: 130,
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/icons/change-avatar.png',
-                          width: 25,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: logic.showChangeAvatar,
+                child: SizedBox(
+                  width: 130,
+                  height: 130,
+                  child: Stack(
+                    children: [
+                      Obx(
+                        () => Image.asset(
+                          'assets/avatars/${state.activeAvatar.value}',
+                          width: 130,
+                          height: 130,
                         ),
                       ),
-                    )
-                  ],
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            'assets/icons/change-avatar.png',
+                            width: 25,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Text(
-              logic.globalVariable.userData.value?.name ?? '',
-              style:
-                  blueTextStyle.copyWith(fontSize: 24, fontWeight: extraBold),
-            ),
-            Text(
-              logic.firebase.currentUser?.email ?? '',
-              style: blueTextStyle.copyWith(fontSize: 16, fontWeight: light),
-            ),
-            const SizedBox(height: 23),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                itemWidget(value: '7/11', name: 'Materi'),
-                Container(
-                  height: 37,
-                  width: 1,
-                  color: kBlackColor,
-                ),
-                itemWidget(value: '230', name: 'Poin'),
-                Container(
-                  height: 37,
-                  width: 1,
-                  color: kBlackColor,
-                ),
-                itemWidget(value: '3/4', name: 'Kuis'),
-              ],
-            ),
-            const SizedBox(height: 34),
-            containerMenuItem(
-              icon: 'assets/icons/user.png',
-              title: 'Ubah Profil',
-              onTap: logic.ubahProfileDialog,
-            ),
-            containerMenuItem(
-              icon: 'assets/icons/lock.png',
-              title: 'Ubah Kata Sandi',
-              onTap: () => Get.toNamed(ChangePasswordUi.namePath),
-            ),
-            containerMenuItem(
-              icon: 'assets/icons/statistik.png',
-              title: 'Statistik',
-              onTap: () => Get.toNamed(StatisticUi.namePath),
-            ),
-            containerMenuItem(
-              icon: 'assets/icons/logout.png',
-              title: 'Keluar',
-              onTap: logic.logout,
-            ),
-          ],
+              Text(
+                logic.globalVariable.userData.value?.name ?? '',
+                style:
+                    blueTextStyle.copyWith(fontSize: 24, fontWeight: extraBold),
+              ),
+              Text(
+                logic.firebase.currentUser?.email ?? '',
+                style: blueTextStyle.copyWith(fontSize: 16, fontWeight: light),
+              ),
+              const SizedBox(height: 23),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  itemWidget(value: '7/11', name: 'Materi'),
+                  Container(
+                    height: 37,
+                    width: 1,
+                    color: kBlackColor,
+                  ),
+                  itemWidget(value: '230', name: 'Poin'),
+                  Container(
+                    height: 37,
+                    width: 1,
+                    color: kBlackColor,
+                  ),
+                  itemWidget(value: '3/4', name: 'Kuis'),
+                ],
+              ),
+              const SizedBox(height: 34),
+              containerMenuItem(
+                icon: 'assets/icons/user.png',
+                title: 'Ubah Profil',
+                onTap: logic.ubahProfileDialog,
+              ),
+              containerMenuItem(
+                icon: 'assets/icons/lock.png',
+                title: 'Ubah Kata Sandi',
+                onTap: () => Get.toNamed(ChangePasswordUi.namePath),
+              ),
+              containerMenuItem(
+                icon: 'assets/icons/statistik.png',
+                title: 'Statistik',
+                onTap: () => Get.toNamed(StatisticUi.namePath),
+              ),
+              containerMenuItem(
+                icon: 'assets/icons/logout.png',
+                title: 'Keluar',
+                onTap: logic.logout,
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

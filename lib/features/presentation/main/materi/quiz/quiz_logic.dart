@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/application/quiz_app_service.dart';
+import 'package:terralith/features/domain/materi/model/materi_model.dart';
 import 'package:terralith/features/domain/quiz/model/quiz_result_model.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_result/quiz_result_ui.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_state.dart';
@@ -13,12 +14,12 @@ class QuizLogic extends GetxController {
   final QuizState state = QuizState();
 
   Timer? _timer;
-  late String title;
+  late MateriModel materiModel;
 
   @override
   void onInit() {
-    title = Get.arguments.length > 0 ? Get.arguments[0] : 'Evaluasi Akhir';
-    state.quizList = _appService.getQuizData(materi: title);
+    materiModel = Get.arguments[0];
+    state.quizList = _appService.getQuizData(materi: materiModel.title);
     startTimer();
     super.onInit();
   }
@@ -58,13 +59,15 @@ class QuizLogic extends GetxController {
   void gotoResult() {
     _timer!.cancel();
     final result = QuizResultModel(
-        title: title,
-        benar: state.soalBenar,
-        salah: state.soalSalah,
-        point: state.poin.value);
+      title: materiModel.title,
+      benar: state.soalBenar,
+      salah: state.soalSalah,
+      point: state.poin.value,
+      quizNumber: materiModel.quizNumber,
+    );
     Get.offAndToNamed(
       QuizResultUi.namePath,
-      arguments: [result, title],
+      arguments: [result, materiModel],
     );
   }
 
@@ -91,39 +94,37 @@ class QuizLogic extends GetxController {
     bool benar = state.selectedJawaban.value == jawabanBenar;
     int poin = benar ? 20 : 0;
     Get.dialog(
-      GestureDetector(
-        onTap: () => nextSoal(benar),
-        child: Container(
-          width: Get.width,
-          height: Get.height,
-          color: kBlueLightColor.withValues(alpha: 0.9),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              Image.asset(
-                benar ? 'assets/icons/benar.png' : 'assets/icons/salah.png',
-                width: 160,
-              ),
+      Container(
+        width: Get.width,
+        height: Get.height,
+        color: kBlueLightColor.withValues(alpha: 0.9),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Spacer(),
+            Image.asset(
+              benar ? 'assets/icons/benar.png' : 'assets/icons/salah.png',
+              width: 160,
+            ),
+            Text(
+              'Jawaban ${benar ? 'Benar' : 'Salah'}\n+ $poin poin',
+              style:
+                  blackTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
+              textAlign: TextAlign.center,
+            ),
+            const Spacer(),
+            if (!benar)
               Text(
-                'Jawaban ${benar ? 'Benar' : 'Salah'}\n+ $poin poin',
+                'Kunci Jawaban:\n $jawabanBenar',
                 style: blackTextStyle.copyWith(
                     fontSize: 20, fontWeight: extraBold),
                 textAlign: TextAlign.center,
               ),
-              const Spacer(),
-              if (!benar)
-                Text(
-                  'Kunci Jawaban:\n $jawabanBenar',
-                  style: blackTextStyle.copyWith(
-                      fontSize: 20, fontWeight: extraBold),
-                  textAlign: TextAlign.center,
-                ),
-              if (!benar) const Spacer(),
-            ],
-          ),
+            if (!benar) const Spacer(),
+          ],
         ),
       ),
+      barrierDismissible: false,
     );
     Future.delayed(
       const Duration(seconds: 2),

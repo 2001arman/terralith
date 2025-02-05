@@ -31,4 +31,10 @@ class QuizAppService implements QuizRepositoryBase {
   Future<Either<FirebaseException, List<QuizResultModel>>> getQuizResult() {
     return _remoteDataSource.getQuizResult();
   }
+
+  @override
+  Future<Either<FirebaseException, bool>> createQuizResult({
+    required QuizResultModel quizResult,
+  }) =>
+      _remoteDataSource.createQuizResult(quizResult: quizResult);
 }
