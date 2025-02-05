@@ -88,42 +88,46 @@ class MainUi extends StatelessWidget {
                           color: kWhiteColor,
                           boxShadow: [defaultBoxShadow],
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                'Tenaga Geologi',
-                                style: darkBoldBlueTextStyle.copyWith(
-                                    fontSize: 15, fontWeight: extraBold),
+                        child: Obx(
+                          () => Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  state.activeProgress.value.title,
+                                  style: darkBoldBlueTextStyle.copyWith(
+                                      fontSize: 15, fontWeight: extraBold),
+                                ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 60,
-                              height: 72,
-                              child: Stack(
-                                children: [
-                                  Center(
-                                    child: CircularProgressIndicator(
-                                      value: 78 / 100,
-                                      color: kBlueColor,
-                                      backgroundColor: kBlueSemiLightColor,
-                                      strokeWidth: 8,
-                                      strokeCap: StrokeCap.round,
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Text(
-                                      '78%',
-                                      style: darkBoldBlueTextStyle.copyWith(
-                                        fontSize: 10,
-                                        fontWeight: black,
+                              SizedBox(
+                                width: 60,
+                                height: 72,
+                                child: Stack(
+                                  children: [
+                                    Center(
+                                      child: CircularProgressIndicator(
+                                        value: state.activeProgress.value
+                                                .progress.value /
+                                            100,
+                                        color: kBlueColor,
+                                        backgroundColor: kBlueSemiLightColor,
+                                        strokeWidth: 8,
+                                        strokeCap: StrokeCap.round,
                                       ),
                                     ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                                    Center(
+                                      child: Text(
+                                        '${state.activeProgress.value.progress.value.toInt()}%',
+                                        style: darkBoldBlueTextStyle.copyWith(
+                                          fontSize: 10,
+                                          fontWeight: black,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ],

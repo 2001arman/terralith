@@ -5,6 +5,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:terralith/features/application/materi_app_service.dart';
+import 'package:terralith/features/domain/materi/model/materi_model.dart';
+import 'package:terralith/features/presentation/main/main_logic.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_logic.dart';
 
 import '../../../../../../utility/shared/constants/constants_ui.dart';
@@ -25,6 +27,7 @@ class DetailMateriUi extends StatefulWidget {
 class _DetailMateriUiState extends State<DetailMateriUi> {
   final _appService = Get.put(MateriAppService());
   final _subMateriLogic = Get.find<SubMateriLogic>();
+  final _mainLogic = Get.find<MainLogic>();
 
   PdfViewerController controller = PdfViewerController();
   Timer? _debounce;
@@ -65,6 +68,10 @@ class _DetailMateriUiState extends State<DetailMateriUi> {
     EasyLoading.dismiss();
 
     _subMateriLogic.updateProgress(title: widget.title, progress: progress);
+    _mainLogic.updateLastProgress(
+      data: SubMateriModel(
+          title: widget.title, asset: '', progress: progress.obs),
+    );
   }
 
   @override

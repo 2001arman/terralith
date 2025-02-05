@@ -23,4 +23,7 @@ class MateriAppService {
     required String materi,
   }) =>
       _repository.getSubMateriProgress(materi: materi);
+
+  Future<Either<FirebaseException, SubMateriModel>> getLatestProgress() =>
+      _repository.getLatestProgress();
 }

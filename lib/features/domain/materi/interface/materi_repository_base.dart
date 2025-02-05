@@ -12,4 +12,6 @@ abstract class MateriRepositoryBase {
   Future<Either<FirebaseException, List<SubMateriModel>>> getSubMateriProgress({
     required String materi,
   });
+
+  Future<Either<FirebaseException, SubMateriModel>> getLatestProgress();
 }

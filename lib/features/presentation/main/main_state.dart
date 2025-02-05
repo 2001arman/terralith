@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:terralith/features/domain/materi/model/materi_model.dart';
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
 import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
@@ -6,6 +8,12 @@ import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_ui.dart';
 
 class MainState {
+  Rx<SubMateriModel> activeProgress = SubMateriModel(
+    title: 'Pengertian Litosfer',
+    asset: '',
+    progress: 0.0.obs,
+  ).obs;
+
   List<HomeItemModel> homeItems = [
     HomeItemModel(
       name: 'Kompetensi',
