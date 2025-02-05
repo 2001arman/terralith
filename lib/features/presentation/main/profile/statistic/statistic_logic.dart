@@ -19,7 +19,13 @@ class StatisticLogic extends GetxController {
     EasyLoading.dismiss();
     data.fold(
       (l) => Get.log('error quiz $l'),
-      (r) => state.quizResult.assignAll(r),
+      (r) {
+        for (var data in r) {
+          final selected = state.quizResult
+              .indexWhere((result) => result.quizNumber == data.quizNumber);
+          state.quizResult[selected] = data;
+        }
+      },
     );
   }
 }

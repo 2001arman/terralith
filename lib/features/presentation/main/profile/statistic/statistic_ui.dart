@@ -131,7 +131,7 @@ class StatisticUi extends StatelessWidget {
                       height: 30,
                     ),
                     Text(
-                      '${result.benar} soal',
+                      '${result.salah} soal',
                       style: blueTextStyle.copyWith(fontWeight: medium),
                     ),
                   ],

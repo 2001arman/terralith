@@ -22,4 +22,14 @@ class QuizResultModel {
       quizNumber: json['quiz_number'] as int,
     );
   }
+
+  factory QuizResultModel.empty(int quizNumber) {
+    return QuizResultModel(
+      title: '',
+      benar: 0,
+      salah: 0,
+      point: 0,
+      quizNumber: quizNumber,
+    );
+  }
 }
