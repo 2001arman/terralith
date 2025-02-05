@@ -96,7 +96,7 @@ class QuizLogic extends GetxController {
         child: Container(
           width: Get.width,
           height: Get.height,
-          color: kBlueLightColor.withOpacity(0.9),
+          color: kBlueLightColor.withValues(alpha: 0.9),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

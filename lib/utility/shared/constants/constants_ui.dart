@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 Color kBackGroundColor = const Color(0xFF001F3F);
 Color kBlackColor = const Color(0xFF001F3F);
-Color kTextFormColor = const Color(0xFFD6E6F2).withOpacity(0.6);
+Color kTextFormColor = const Color(0xFFD6E6F2).withValues(alpha: 0.6);
 Color kMainColor = const Color(0xFF001F3F);
 Color kWhiteColor = const Color(0xFFFFFFFF);
 Color kGreyColor = const Color(0xFFD9D9D9);
@@ -49,5 +49,5 @@ BoxShadow defaultBoxShadow = BoxShadow(
   offset: const Offset(0, 4),
   blurRadius: 4,
   spreadRadius: 0,
-  color: kBlackColor.withOpacity(0.25),
+  color: kBlackColor.withValues(alpha: 0.25),
 );

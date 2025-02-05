@@ -34,7 +34,7 @@ class PengembangUi extends StatelessWidget {
       appBar: AppBar(
         iconTheme: IconThemeData(color: kBlueColor),
         backgroundColor: kBlueSemiLightColor,
-        shadowColor: kBlackColor.withOpacity(0.25),
+        shadowColor: kBlackColor.withValues(alpha: 0.25),
         title: Text(
           'Pengembang',
           style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),

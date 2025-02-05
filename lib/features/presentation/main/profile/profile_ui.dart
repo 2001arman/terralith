@@ -45,7 +45,7 @@ class ProfileUi extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 17),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: kBlueSemiLightColor.withOpacity(0.5),
+            color: kBlueSemiLightColor.withValues(alpha: 0.5),
           ),
           child: Row(
             children: [
@@ -85,7 +85,7 @@ class ProfileUi extends StatelessWidget {
       appBar: AppBar(
         iconTheme: IconThemeData(color: kBlueColor),
         backgroundColor: kBlueSemiLightColor,
-        shadowColor: kBlackColor.withOpacity(0.25),
+        shadowColor: kBlackColor.withValues(alpha: 0.25),
         title: Text(
           'Profil Saya',
           style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),

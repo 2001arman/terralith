@@ -153,7 +153,7 @@ class QuizUi extends StatelessWidget {
         appBar: AppBar(
           iconTheme: IconThemeData(color: kBlueColor),
           backgroundColor: kBlueSemiLightColor,
-          shadowColor: kBlackColor.withOpacity(0.25),
+          shadowColor: kBlackColor.withValues(alpha: 0.25),
           automaticallyImplyLeading: false,
           title: Text(
             'Kuis ${logic.title}',
