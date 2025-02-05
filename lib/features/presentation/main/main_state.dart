@@ -1,11 +1,14 @@
+import 'dart:ui';
+
 import 'package:get/get.dart';
 import 'package:terralith/features/domain/materi/model/materi_model.dart';
+import 'package:terralith/features/presentation/main/evaluasi_akhir/evaluasi_akhir_ui.dart';
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
-import 'package:terralith/features/presentation/main/materi/quiz/quiz_ui.dart';
 import 'package:terralith/features/presentation/main/pengembang/pengembang_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_ui.dart';
+import 'package:terralith/utility/utils/custom_dialog.dart';
 
 class MainState {
   Rx<SubMateriModel> activeProgress = SubMateriModel(
@@ -33,7 +36,15 @@ class MainState {
     HomeItemModel(
       name: 'Evaluasi Akhir',
       icon: 'assets/icons/evaluasi-akhir.png',
-      path: QuizUi.namePath,
+      path: EvaluasiAkhirUi.namePath,
+      onTap: () => CustomDialog.showQuizDialog(
+        onTap: () {
+          Get.toNamed(EvaluasiAkhirUi.namePath);
+        },
+        totalSoal: 25,
+        totalMenit: 25,
+        title: 'evaluasi',
+      ),
     ),
     HomeItemModel(
       name: 'Profil',
@@ -52,10 +63,12 @@ class HomeItemModel {
   final String name;
   final String icon;
   final String path;
+  final VoidCallback? onTap;
 
   HomeItemModel({
     required this.name,
     required this.icon,
     required this.path,
+    this.onTap,
   });
 }

@@ -164,7 +164,8 @@ class MainUi extends StatelessWidget {
             itemCount: state.homeItems.length,
             padding: const EdgeInsets.symmetric(horizontal: 25),
             itemBuilder: (context, index) => GestureDetector(
-              onTap: () => Get.toNamed(state.homeItems[index].path),
+              onTap: state.homeItems[index].onTap ??
+                  () => Get.toNamed(state.homeItems[index].path),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 22),

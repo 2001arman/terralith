@@ -366,5 +366,174 @@ class QuizLocalDataSource {
       ],
       jawabanBenar: "Gerakan lempeng bumi",
     ),
+    QuizModel(
+      soal:
+          'Gempa yang memiliki kedalaman antara 100 km hingga 300 km di bawah permukaan bumi disebut …',
+      jawaban: [
+        'Gempa dangkal',
+        'Gempa menengah',
+        'Gempa dalam',
+        'Gempa vulkanik',
+        'Gempa daratan'
+      ],
+      jawabanBenar: 'Gempa menengah',
+    ),
+    QuizModel(
+      soal:
+          'Proses pelapukan yang terjadi akibat perubahan suhu yang tiba-tiba sehingga batuan pecah menjadi bagian yang lebih kecil termasuk dalam jenis pelapukan …',
+      jawaban: [
+        'Mekanik (Fisik)',
+        'Kimiawi',
+        'Biologis',
+        'Sedimentasi',
+        'Erosi'
+      ],
+      jawabanBenar: 'Mekanik (Fisik)',
+    ),
+    QuizModel(
+      soal: 'Proses oksidasi dalam pelapukan kimiawi terjadi ketika …',
+      jawaban: [
+        'Mineral dalam batuan bereaksi dengan air',
+        'Karbon dioksida dalam air membentuk asam karbonat',
+        'Batuan menyerap air dan mengembang',
+        'Mineral dalam batuan bereaksi dengan oksigen di udara atau air',
+        'Air hujan bereaksi dengan batuan kapur'
+      ],
+      jawabanBenar:
+          'Mineral dalam batuan bereaksi dengan oksigen di udara atau air',
+    ),
+    QuizModel(
+      soal:
+          'Erosi yang disebabkan oleh air yang mengalir seperti air sungai dan hujan dikenal sebagai …',
+      jawaban: ['Abrasi', 'Deflasi', 'Ablasi', 'Eksarasi', 'Korosi'],
+      jawabanBenar: 'Ablasi',
+    ),
+    QuizModel(
+      soal:
+          'Erosi yang mengakibatkan pengikisan tanah yang lebih besar di area cekungan disebut …',
+      jawaban: [
+        'Erosi Percik',
+        'Erosi Parit',
+        'Erosi Alur',
+        'Erosi Lembar',
+        'Erosi Abrasi'
+      ],
+      jawabanBenar: 'Erosi Alur',
+    ),
+    QuizModel(
+      soal: 'Tanah longsor (land slide) terjadi ketika …',
+      jawaban: [
+        'Tanah bergerak sangat lambat di lereng landai',
+        'Tanah mengalir akibat kelembapan berlebih',
+        'Massa tanah bergerak cepat menuruni lereng yang curam',
+        'Tanah ambruk dan membentuk cekungan',
+        'Tanah terputus-putus dan membentuk teras'
+      ],
+      jawabanBenar: 'Massa tanah bergerak cepat menuruni lereng yang curam',
+    ),
+    QuizModel(
+      soal:
+          'Spit dan tombolo adalah bentuklahan yang dihasilkan oleh proses sedimentasi yang disebabkan oleh …',
+      jawaban: ['Air sungai', 'Gelombang laut', 'Angin', 'Gletser', 'Batuan'],
+      jawabanBenar: 'Gelombang laut',
+    ),
+    QuizModel(
+      soal:
+          'Sedimentasi oleh air (fluvial) menghasilkan berbagai bentuklahan, salah satunya adalah meander, yang terbentuk karena …',
+      jawaban: [
+        'Pengendapan material di sekitar sungai',
+        'Perubahan aliran air yang berkelok-kelok',
+        'Peningkatan kecepatan aliran air',
+        'Pengaruh arus gelombang laut',
+        'Akumulasi pasir yang dibawa angin'
+      ],
+      jawabanBenar: 'Perubahan aliran air yang berkelok-kelok',
+    ),
+    QuizModel(
+      soal:
+          'Dalam proses mitigasi bencana gempa bumi, penetapan zonasi risiko sangat penting. Salah satu parameter yang harus diperhatikan dalam zonasi gempa adalah …',
+      jawaban: [
+        'Kedalaman sumber gempa dan jenis lempeng yang bergerak',
+        'Ketinggian wilayah terhadap permukaan laut',
+        'Jenis batuan yang ada di permukaan bumi',
+        'Kecepatan angin yang terjadi di daerah tersebut',
+        'Kedalaman sumur air tanah'
+      ],
+      jawabanBenar: 'Kedalaman sumber gempa dan jenis lempeng yang bergerak',
+    ),
+    QuizModel(
+      soal:
+          'Saat terjadi gempa bumi, salah satu langkah mitigasi yang dapat diambil untuk mengurangi korban jiwa adalah …',
+      jawaban: [
+        'Meningkatkan kecepatan pembangunan gedung tinggi',
+        'Menyediakan peralatan untuk membersihkan puing-puing',
+        'Menghentikan sementara kegiatan ekonomi di seluruh wilayah',
+        'Menyusun rencana evakuasi dan menyediakan tempat aman',
+        'Menyebarkan berita gempa secara langsung ke seluruh dunia'
+      ],
+      jawabanBenar: 'Menyusun rencana evakuasi dan menyediakan tempat aman',
+    ),
+    QuizModel(
+      soal:
+          'Untuk mengurangi dampak tsunami, salah satu langkah mitigasi yang dapat dilakukan adalah …',
+      jawaban: [
+        'Membuat sistem peringatan dini tsunami',
+        'Membangun bangunan di sepanjang pantai',
+        'Meningkatkan jumlah kapal laut di pesisir',
+        'Menanam vegetasi di pantai untuk mencegah gelombang',
+        'Meningkatkan penggunaan alat berat di laut'
+      ],
+      jawabanBenar: 'Membuat sistem peringatan dini tsunami',
+    ),
+    QuizModel(
+      soal: 'Salah satu indikator peringatan dini tsunami adalah pemantauan …',
+      jawaban: [
+        'Gerakan air laut melalui alat seismograf di permukaan',
+        'Aktivitas gunung berapi yang dapat memicu tsunami',
+        'Kecepatan arus air laut pada permukaan',
+        'Gejala gelombang laut yang terdeteksi oleh satelit',
+        'Perubahan tinggi permukaan laut yang mendadak melalui sistem sensor'
+      ],
+      jawabanBenar:
+          'Perubahan tinggi permukaan laut yang mendadak melalui sistem sensor',
+    ),
+    QuizModel(
+      soal:
+          'Salah satu upaya mitigasi tanah longsor di daerah rawan adalah dengan …',
+      jawaban: [
+        'Menanami daerah rawan longsor dengan pohon yang memiliki akar kuat',
+        'Mengurangi intensitas hujan dengan teknologi modifikasi cuaca',
+        'Membangun tembok penghalang di sepanjang tepi sungai',
+        'Mengalihkan aliran sungai ke daerah yang lebih rendah',
+        'Mengurangi aktivitas vulkanik di daerah sekitar'
+      ],
+      jawabanBenar:
+          'Menanami daerah rawan longsor dengan pohon yang memiliki akar kuat',
+    ),
+    QuizModel(
+      soal:
+          'Salah satu langkah mitigasi yang dapat dilakukan untuk mengurangi dampak erupsi gunung berapi adalah …',
+      jawaban: [
+        'Membatasi jumlah penduduk di sekitar gunung berapi',
+        'Meningkatkan penggunaan energi panas bumi dari gunung berapi',
+        'Menanam lebih banyak pohon di sekitar gunung',
+        'Membangun sistem peringatan dini letusan',
+        'Mengalihkan aliran sungai yang ada di sekitar gunung'
+      ],
+      jawabanBenar: 'Membangun sistem peringatan dini letusan',
+    ),
+    QuizModel(
+      soal:
+          'Dalam mitigasi bencana letusan gunung berapi, teknologi pemantauan erupsi menggunakan alat seperti seismometer dan tiltmeter sangat penting untuk …',
+      jawaban: [
+        'Menyediakan informasi mengenai kecepatan angin di sekitar gunung',
+        'Menyediakan data untuk memprediksi volume letusan',
+        'Mendeteksi perubahan bentuk gunung dan aktivitas seismik yang dapat mengindikasikan potensi letusan',
+        'Mendeteksi potensi terjadinya tanah longsor di sekitar gunung',
+        'Menentukan jenis lava yang akan keluar saat letusan'
+      ],
+      jawabanBenar:
+          'Mendeteksi perubahan bentuk gunung dan aktivitas seismik yang dapat mengindikasikan potensi letusan',
+    ),
   ];
 }
