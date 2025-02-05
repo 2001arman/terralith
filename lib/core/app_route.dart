@@ -5,6 +5,8 @@ import 'package:terralith/features/presentation/auth/username/username_binding.d
 import 'package:terralith/features/presentation/auth/username/username_ui.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/evaluasi_akhir_binding.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/evaluasi_akhir_ui.dart';
+import 'package:terralith/features/presentation/main/evaluasi_akhir/hasil_evaluasi/hasil_evaluasi_binding.dart';
+import 'package:terralith/features/presentation/main/evaluasi_akhir/hasil_evaluasi/hasil_evaluasi_ui.dart';
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_binding.dart';
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
 import 'package:terralith/features/presentation/main/main_binding.dart';
@@ -119,6 +121,11 @@ class AppRoute {
       name: EvaluasiAkhirUi.namePath,
       page: () => EvaluasiAkhirUi(),
       binding: EvaluasiAkhirBinding(),
+    ),
+    GetPage(
+      name: HasilEvaluasiUi.namePath,
+      page: () => HasilEvaluasiUi(),
+      binding: HasilEvaluasiBinding(),
     ),
   ];
 }

@@ -18,6 +18,8 @@ Color kYellowColor = const Color(0xFFFFCA0F);
 Color kGreenColor = const Color(0xFF39B54A);
 Color kRedColor = const Color(0xFFFF3636);
 
+Color kDividerColor = const Color(0xFFE4E4E4);
+
 TextStyle whiteTextStyle = GoogleFonts.poppins(color: Colors.white);
 TextStyle blackTextStyle = GoogleFonts.poppins(color: kBlackColor);
 TextStyle mainTextStyle = GoogleFonts.poppins(color: kMainColor);
@@ -27,6 +29,7 @@ TextStyle darkBoldBlueTextStyle =
     GoogleFonts.poppins(color: kDarkBoldBlueColor);
 TextStyle blueSemiLightTextStyle =
     GoogleFonts.poppins(color: kBlueSemiLightColor);
+TextStyle greyTextStyle = GoogleFonts.poppins(color: kGreyColor);
 
 LinearGradient mainGradient = LinearGradient(
   begin: Alignment.topCenter,

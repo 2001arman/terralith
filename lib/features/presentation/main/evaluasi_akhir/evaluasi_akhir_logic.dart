@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/evaluasi_akhir_state.dart';
+import 'package:terralith/features/presentation/main/evaluasi_akhir/hasil_evaluasi/hasil_evaluasi_ui.dart';
 
 import '../../../application/quiz_app_service.dart';
 
@@ -81,7 +82,6 @@ class EvaluasiAkhirLogic extends GetxController {
         state.soalSalah++;
       }
     }
-    Get.log(
-        'cek total benar ${state.soalBenar}, salah ${state.soalSalah}, dan poin ${state.poin}');
+    Get.toNamed(HasilEvaluasiUi.namePath);
   }
 }
