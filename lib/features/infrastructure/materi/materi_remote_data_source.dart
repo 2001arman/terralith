@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:terralith/features/domain/materi/model/materi_model.dart';
 import '../../domain/materi/interface/materi_repository_base.dart';
 
 class MateriRemoteDataSource implements MateriRepositoryBase {
@@ -77,6 +79,52 @@ class MateriRemoteDataSource implements MateriRepositoryBase {
       }
 
       return const Right(true);
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<FirebaseException, List<SubMateriModel>>> getSubMateriProgress(
+      {required String materi}) async {
+    try {
+      final userDoc = await db
+          .collection('users')
+          .where('userId', isEqualTo: auth.currentUser!.uid)
+          .get();
+
+      if (userDoc.docs.isEmpty) {
+        return Left(
+          FirebaseException(
+            message: 'User not found',
+            code: 'user-not-found',
+            plugin: 'firebase',
+          ),
+        );
+      }
+
+      // Get the first user document ID
+      String userId = userDoc.docs.first.id;
+
+      // Fetch all sub_materi data
+      final materiProgressQuery = await db
+          .collection('users')
+          .doc(userId)
+          .collection('materi_progress')
+          .where('materi', isEqualTo: materi)
+          .get();
+
+      if (materiProgressQuery.docs.isEmpty) {
+        return const Right([]);
+      }
+
+      // Convert Firestore documents to SubMateriModel list
+      List<SubMateriModel> subMateriList = materiProgressQuery.docs.map((doc) {
+        Get.log('cek datanya dong ${doc.data}');
+        return SubMateriModel.fromJson(doc.data());
+      }).toList();
+
+      return Right(subMateriList);
     } on FirebaseException catch (e) {
       return Left(e);
     }

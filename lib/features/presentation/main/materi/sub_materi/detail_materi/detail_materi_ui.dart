@@ -5,6 +5,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:terralith/features/application/materi_app_service.dart';
+import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_logic.dart';
 
 import '../../../../../../utility/shared/constants/constants_ui.dart';
 
@@ -23,6 +24,8 @@ class DetailMateriUi extends StatefulWidget {
 
 class _DetailMateriUiState extends State<DetailMateriUi> {
   final _appService = Get.put(MateriAppService());
+  final _subMateriLogic = Get.find<SubMateriLogic>();
+
   PdfViewerController controller = PdfViewerController();
   Timer? _debounce;
   int invisiblePage = 0;
@@ -44,25 +47,24 @@ class _DetailMateriUiState extends State<DetailMateriUi> {
   }
 
   @override
-  void dispose() {
+  void dispose() async {
     _debounce?.cancel();
-    recordProgress();
+    await recordProgress();
     super.dispose();
   }
 
-  void recordProgress() async {
+  Future<void> recordProgress() async {
+    double progress = (invisiblePage / controller.pageCount) * 100;
+
     EasyLoading.show();
-    final data = await _appService.updateMateriProgress(
+    await _appService.updateMateriProgress(
       materi: widget.materi,
       subMateri: widget.title,
-      progress: (invisiblePage / controller.pageCount) * 100,
+      progress: progress,
     );
     EasyLoading.dismiss();
 
-    data.fold(
-      (l) => Get.log('error nih $l'),
-      (r) => Get.log('berhasil nih'),
-    );
+    _subMateriLogic.updateProgress(title: widget.title, progress: progress);
   }
 
   @override

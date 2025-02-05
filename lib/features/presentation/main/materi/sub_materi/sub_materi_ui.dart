@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:terralith/features/presentation/main/materi/sub_materi/detail_materi/detail_materi_ui.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_logic.dart';
 
 import '../../../../../utility/shared/constants/constants_ui.dart';
@@ -70,12 +69,12 @@ class SubMateriUi extends StatelessWidget {
       );
     }
 
-    Widget progressLinearWidget() {
+    Widget progressLinearWidget({required int progress}) {
       return Row(
         children: [
           Expanded(
             child: LinearProgressIndicator(
-              value: 90 / 100,
+              value: progress / 100,
               backgroundColor: kGreyColor,
               color: const Color(0xFF6E89A9),
               minHeight: 7,
@@ -84,7 +83,7 @@ class SubMateriUi extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(
-            '90%',
+            '$progress%',
             style: blueSemiLightTextStyle.copyWith(
               color: const Color(0xFF6E89A9),
               fontSize: 12,
@@ -142,24 +141,27 @@ class SubMateriUi extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 23, horizontal: 25),
         children: [
-          ...logic.materi.subMateri.asMap().entries.map(
-                (data) => itemContainer(
-                  prefix: Text(
-                    "${data.key + 1}",
-                    style: blueTextStyle.copyWith(
-                        fontWeight: semiBold, fontSize: 24),
-                  ),
-                  title: data.value.title,
-                  content: progressLinearWidget(),
-                  onTap: () => Get.to(
-                    () => DetailMateriUi(
-                      materi: logic.materi.title,
+          Column(
+            children: [
+              ...logic.materi.subMateri.asMap().entries.map(
+                    (data) => itemContainer(
+                      prefix: Text(
+                        "${data.key + 1}",
+                        style: blueTextStyle.copyWith(
+                            fontWeight: semiBold, fontSize: 24),
+                      ),
                       title: data.value.title,
-                      asset: data.value.asset,
+                      content: Obx(
+                        () => progressLinearWidget(
+                          progress: data.value.progress.value.toInt(),
+                        ),
+                      ),
+                      onTap: () =>
+                          logic.gotoDetailMateri(subMateri: data.value),
                     ),
                   ),
-                ),
-              ),
+            ],
+          ),
           itemContainer(
             prefix: Padding(
               padding: const EdgeInsets.all(16),
