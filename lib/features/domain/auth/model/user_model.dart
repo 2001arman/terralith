@@ -4,11 +4,13 @@ class UserModel {
   String avatar;
   String name;
   final String userId;
+  final String email;
 
   UserModel({
     required this.avatar,
     required this.name,
     required this.userId,
+    required this.email,
   });
 
   factory UserModel.fromRawJson(String str) =>
@@ -20,11 +22,13 @@ class UserModel {
         avatar: json["avatar"],
         name: json["name"],
         userId: json["userId"],
+        email: json["email"],
       );
 
   Map<String, dynamic> toJson() => {
         "avatar": avatar,
         "name": name,
         "userId": userId,
+        "email": email,
       };
 }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:terralith/features/domain/quiz/model/evaluasi_model.dart';
 import 'package:terralith/features/domain/quiz/model/quiz_result_model.dart';
 
 class QuizRemoteDataSource {
@@ -100,6 +101,43 @@ class QuizRemoteDataSource {
           'salah': quizResult.salah,
           'benar': quizResult.benar,
           'quiz_number': quizResult.quizNumber,
+        });
+      }
+
+      return const Right(true);
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
+
+  Future<Either<FirebaseException, bool>> createEvaluasiAkhir({
+    required EvaluasiModel evaluasi,
+  }) async {
+    try {
+      final userDoc = await db
+          .collection('evaluasi_akhir')
+          .where('userId', isEqualTo: auth.currentUser!.uid)
+          .get();
+
+      if (userDoc.docs.isNotEmpty) {
+        String userId = userDoc.docs.first.id;
+
+        await db.collection('evaluasi_akhir').doc(userId).update({
+          'nilai': evaluasi.nilai,
+          'salah': evaluasi.salah,
+          'benar': evaluasi.benar,
+          'createdAt': evaluasi.createdAt,
+        });
+
+        return const Right(true);
+      } else {
+        // Document does not exist, create a new one
+        await db.collection('evaluasi_akhir').add({
+          'nilai': evaluasi.nilai,
+          'salah': evaluasi.salah,
+          'benar': evaluasi.benar,
+          'createdAt': evaluasi.createdAt,
+          'userId': auth.currentUser!.uid,
         });
       }
 

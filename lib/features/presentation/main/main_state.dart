@@ -39,6 +39,7 @@ class MainState {
       path: EvaluasiAkhirUi.namePath,
       onTap: () => CustomDialog.showQuizDialog(
         onTap: () {
+          Get.back();
           Get.toNamed(EvaluasiAkhirUi.namePath);
         },
         totalSoal: 25,

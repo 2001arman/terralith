@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:terralith/features/domain/quiz/interface/quiz_repository_base.dart';
+import 'package:terralith/features/domain/quiz/model/evaluasi_model.dart';
 import 'package:terralith/features/domain/quiz/model/quiz_result_model.dart';
 import 'package:terralith/features/infrastructure/quiz/quiz_local_data_source.dart';
 import 'package:terralith/features/infrastructure/quiz/quiz_remote_data_source.dart';
@@ -37,4 +38,9 @@ class QuizAppService implements QuizRepositoryBase {
     required QuizResultModel quizResult,
   }) =>
       _remoteDataSource.createQuizResult(quizResult: quizResult);
+
+  @override
+  Future<Either<FirebaseException, bool>> createEvaluasiAkhir(
+          {required EvaluasiModel evaluasi}) =>
+      _remoteDataSource.createEvaluasiAkhir(evaluasi: evaluasi);
 }

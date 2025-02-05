@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:terralith/features/domain/quiz/model/evaluasi_model.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/evaluasi_akhir_state.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/hasil_evaluasi/hasil_evaluasi_ui.dart';
 
@@ -49,17 +51,6 @@ class EvaluasiAkhirLogic extends GetxController {
     Get.back();
     _timer!.cancel();
     hitungBenarSalah();
-    // final result = QuizResultModel(
-    //   title: materiModel.title,
-    //   benar: state.soalBenar,
-    //   salah: state.soalSalah,
-    //   point: state.poin.value,
-    //   quizNumber: materiModel.quizNumber,
-    // );
-    // Get.offAndToNamed(
-    //   QuizResultUi.namePath,
-    //   arguments: [result, materiModel],
-    // );
   }
 
   String get timerText {
@@ -72,7 +63,7 @@ class EvaluasiAkhirLogic extends GetxController {
     state.selectedJawabanAll[index].jawaban.value = jawaban;
   }
 
-  void hitungBenarSalah() {
+  void hitungBenarSalah() async {
     for (var i = 0; i < state.selectedJawabanAll.length - 1; i++) {
       if (state.selectedJawabanAll[i].jawaban.value ==
           state.quizList[i].jawabanBenar) {
@@ -82,6 +73,16 @@ class EvaluasiAkhirLogic extends GetxController {
         state.soalSalah++;
       }
     }
-    Get.toNamed(HasilEvaluasiUi.namePath);
+    EasyLoading.show();
+    final evaluasi = EvaluasiModel(
+      userId: '',
+      nilai: state.poin.value,
+      salah: state.soalSalah,
+      benar: state.soalBenar,
+      createdAt: DateTime.now(),
+    );
+    await _appService.createEvaluasiAkhir(evaluasi: evaluasi);
+    EasyLoading.dismiss();
+    Get.offAndToNamed(HasilEvaluasiUi.namePath, arguments: evaluasi);
   }
 }

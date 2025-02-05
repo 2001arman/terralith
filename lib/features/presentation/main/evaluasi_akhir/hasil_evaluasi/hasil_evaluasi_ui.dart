@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/hasil_evaluasi/hasil_evaluasi_logic.dart';
 
 import '../../../../../utility/shared/constants/constants_ui.dart';
+import '../../../../domain/auth/model/user_model.dart';
 
 class HasilEvaluasiUi extends StatelessWidget {
   static const String namePath = '/hasil_evaluasi_akhir';
@@ -50,9 +52,12 @@ class HasilEvaluasiUi extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.topRight,
-            child: Image.asset(
-              'assets/icons/home.png',
-              width: 30,
+            child: GestureDetector(
+              onTap: Get.back,
+              child: Image.asset(
+                'assets/icons/home.png',
+                width: 30,
+              ),
             ),
           ),
           SizedBox(
@@ -83,7 +88,7 @@ class HasilEvaluasiUi extends StatelessWidget {
                             children: [
                               const SizedBox(height: 50),
                               Text(
-                                '90',
+                                '${state.myEvaluasi.nilai}',
                                 style: darkBlueTextStyle.copyWith(
                                     fontSize: 50, fontWeight: bold),
                               ),
@@ -97,7 +102,7 @@ class HasilEvaluasiUi extends StatelessWidget {
                                   children: [
                                     itemContainer(
                                       icon: 'assets/icons/question_orange.png',
-                                      value: '30',
+                                      value: '25',
                                       title: 'Soal',
                                     ),
                                     VerticalDivider(
@@ -106,7 +111,7 @@ class HasilEvaluasiUi extends StatelessWidget {
                                     ),
                                     itemContainer(
                                       icon: 'assets/icons/benar.png',
-                                      value: '27',
+                                      value: '${state.myEvaluasi.benar}',
                                       title: 'Benar',
                                     ),
                                     VerticalDivider(
@@ -115,7 +120,7 @@ class HasilEvaluasiUi extends StatelessWidget {
                                     ),
                                     itemContainer(
                                       icon: 'assets/icons/salah.png',
-                                      value: '03',
+                                      value: '${state.myEvaluasi.salah}',
                                       title: 'Salah',
                                     ),
                                   ],
@@ -188,47 +193,88 @@ class HasilEvaluasiUi extends StatelessWidget {
         },
         body: Container(
           color: Colors.white,
-          child: ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            itemCount: 20, // Adjust as needed
-            itemBuilder: (context, index) {
-              return Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 8),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: kBlueSemiLightColor,
-                ),
-                child: Row(
-                  children: [
-                    logic.peringkatWidget(index + 1),
-                    const SizedBox(width: 8),
-                    Image.asset('assets/avatars/5.png', width: 50),
-                    const SizedBox(width: 10),
-                    Column(
-                      children: [
-                        Text(
-                          'Arman Maulana',
-                          style: darkBlueTextStyle.copyWith(
-                              fontSize: 13, fontWeight: semiBold),
+          child: StreamBuilder(
+            stream: FirebaseFirestore.instance
+                .collection("evaluasi_akhir")
+                .orderBy('nilai', descending: true)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(child: Text('No Data...'));
+              }
+
+              var items = snapshot.data!.docs;
+
+              return ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                itemCount: items.length, // Adjust as needed
+                itemBuilder: (context, index) {
+                  String userId = items[index]['userId'];
+
+                  return FutureBuilder<UserModel>(
+                    future:
+                        logic.getUserData(userId: userId), // Fetch user data
+
+                    builder: (context, userSnapshot) {
+                      if (userSnapshot.connectionState ==
+                          ConnectionState.waiting) {
+                        return const Center(
+                            child: CircularProgressIndicator()); // Show loader
+                      }
+
+                      if (!userSnapshot.hasData) {
+                        return const Center(child: Text('User not found'));
+                      }
+
+                      UserModel userModel = userSnapshot.data!;
+                      Get.log('cek usserModel ${userModel.name}');
+
+                      return Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 12),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: kBlueSemiLightColor,
                         ),
-                        Text(
-                          '@armanmaulana07',
-                          style: darkBlueTextStyle.copyWith(
-                              fontSize: 10, fontWeight: light),
+                        child: Row(
+                          children: [
+                            logic.peringkatWidget(index + 1),
+                            const SizedBox(width: 8),
+                            Image.asset('assets/avatars/${userModel.avatar}',
+                                width: 50), // Load user avatar
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    userModel.name, // Display fetched user name
+                                    style: darkBlueTextStyle.copyWith(
+                                        fontSize: 13, fontWeight: semiBold),
+                                  ),
+                                  Text(
+                                    '@${userModel.email}', // Display user ID
+                                    style: darkBlueTextStyle.copyWith(
+                                        fontSize: 10, fontWeight: light),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const Spacer(),
+                            Text(
+                              "${items[index]['nilai']} poin",
+                              style: darkBlueTextStyle.copyWith(
+                                  fontSize: 13, fontWeight: semiBold),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Text(
-                      '90 poin',
-                      style: darkBlueTextStyle.copyWith(
-                          fontSize: 13, fontWeight: semiBold),
-                    ),
-                  ],
-                ),
+                      );
+                    },
+                  );
+                },
               );
             },
           ),
