@@ -1,4 +1,4 @@
-import '../../presentation/main/materi/quiz/quiz_state.dart';
+import '../../domain/quiz/model/quiz_model.dart';
 
 class QuizLocalDataSource {
   List<QuizModel> litosferQuiz = [
@@ -251,6 +251,120 @@ class QuizLocalDataSource {
       ],
       jawabanBenar:
           'Menentukan lokasi terbaik untuk evakuasi dan tempat pengungsian',
+    ),
+  ];
+
+  List<QuizModel> evaluasiAkhir = [
+    QuizModel(
+      soal:
+          "Perbedaan ketebalan lapisan litosfer dipengaruhi oleh lokasinya. Bagian yang lebih tebal terdapat pada …",
+      jawaban: ["Samudera", "Lautan", "Pegunungan", "Benua", "Kutub"],
+      jawabanBenar: "Benua",
+    ),
+    QuizModel(
+      soal:
+          "Salah satu perbedaan utama antara kerak benua dan kerak samudera dalam litosfer adalah …",
+      jawaban: [
+        "Kerak benua lebih tipis dan lebih padat dibanding kerak samudera",
+        "Kerak benua lebih tebal dan tersusun terutama dari granit, sedangkan kerak samudera lebih tipis dan tersusun dari basal",
+        "Kerak samudera lebih tebal dan lebih ringan dibanding kerak benua",
+        "Kerak benua dan kerak samudera memiliki ketebalan yang sama tetapi memiliki komposisi berbeda",
+        "Kerak samudera lebih tebal dan tersusun dari batuan metamorf"
+      ],
+      jawabanBenar:
+          "Kerak benua lebih tebal dan tersusun terutama dari granit, sedangkan kerak samudera lebih tipis dan tersusun dari basal",
+    ),
+    QuizModel(
+      soal: "Manakah pernyataan berikut yang tidak benar mengenai litosfer?",
+      jawaban: [
+        "Litosfer terdiri dari kerak bumi dan bagian atas mantel bumi",
+        "Ketebalan litosfer bervariasi, dengan kerak benua lebih tebal dibanding kerak samudera",
+        "Litosfer merupakan bagian penting dalam siklus geologi bumi",
+        "Litosfer berada dalam keadaan tetap dan tidak mengalami pergerakan",
+        "Litosfer berperan dalam proses pembentukan gunung api, gempa bumi, dan pergerakan lempeng"
+      ],
+      jawabanBenar:
+          "Litosfer berada dalam keadaan tetap dan tidak mengalami pergerakan",
+    ),
+    QuizModel(
+      soal:
+          "Salah satu perbedaan utama antara tenaga endogen dan tenaga eksogen adalah …",
+      jawaban: [
+        "Tenaga endogen bekerja dengan cara merusak bentuk permukaan bumi, sedangkan tenaga eksogen membentuknya",
+        "Tenaga endogen berasal dari luar bumi, sedangkan tenaga eksogen berasal dari dalam bumi",
+        "Tenaga endogen membangun dan membentuk permukaan bumi, sedangkan tenaga eksogen mengikis dan meratakannya",
+        "Tenaga eksogen hanya terjadi di daratan, sementara tenaga endogen hanya terjadi di lautan",
+        "Tenaga eksogen memiliki skala perubahan yang lebih besar dibanding tenaga endogen"
+      ],
+      jawabanBenar:
+          "Tenaga endogen membangun dan membentuk permukaan bumi, sedangkan tenaga eksogen mengikis dan meratakannya",
+    ),
+    QuizModel(
+      soal:
+          "Manakah pernyataan berikut yang benar tentang perbedaan gerak epirogenetik dan orogenetik?",
+      jawaban: [
+        "Gerak epirogenetik terjadi lebih cepat dibandingkan gerak orogenetik",
+        "Gerak orogenetik menyebabkan perubahan luas benua, sedangkan gerak epirogenetik membentuk pegunungan",
+        "Gerak epirogenetik bersifat lambat dan meliputi daerah luas, sedangkan gerak orogenetik lebih cepat dan meliputi daerah sempit",
+        "Gerak epirogenetik menghasilkan patahan, sedangkan gerak orogenetik menghasilkan lipatan",
+        "Gerak epirogenetik hanya terjadi di wilayah lautan, sedangkan gerak orogenetik terjadi di daratan"
+      ],
+      jawabanBenar:
+          "Gerak epirogenetik bersifat lambat dan meliputi daerah luas, sedangkan gerak orogenetik lebih cepat dan meliputi daerah sempit",
+    ),
+    QuizModel(
+      soal:
+          "Peristiwa terbentuknya pegunungan akibat pergerakan kerak bumi yang cepat dalam waktu singkat disebut sebagai …",
+      jawaban: [
+        "Tektonisme lateral",
+        "Orogenetik",
+        "Vulkanisme",
+        "Epirogenetik",
+        "Subsiden geologis"
+      ],
+      jawabanBenar: "Orogenetik",
+    ),
+    QuizModel(
+      soal:
+          "Gunung api yang terbentuk dari letusan eksplosif dan memiliki bentuk kerucut dengan lapisan lava serta abu vulkanik secara bergantian disebut …",
+      jawaban: [
+        "Gunung api perisai",
+        "Gunung api maar",
+        "Gunung api strato",
+        "Gunung api lava dome",
+        "Gunung api stromboli"
+      ],
+      jawabanBenar: "Gunung api strato",
+    ),
+    QuizModel(
+      soal:
+          "Letusan gunung api yang terjadi dengan ledakan kuat, mengeluarkan gas dan material piroklastik dalam jumlah besar disebut …",
+      jawaban: [
+        "Erupsi efusif",
+        "Intrusi magma",
+        "Ekshalasi",
+        "Erupsi eksplosif",
+        "Tektonisme"
+      ],
+      jawabanBenar: "Erupsi eksplosif",
+    ),
+    QuizModel(
+      soal:
+          "Berdasarkan proses terbentuknya, tipe gunung api yang hanya satu kali mengeluarkan erupsi yaitu ....",
+      jawaban: ["Maar", "Kerucut", "Perisai", "Stromboli", "Strato"],
+      jawabanBenar: "Maar",
+    ),
+    QuizModel(
+      soal:
+          "Seisme adalah peristiwa yang terjadi di permukaan bumi akibat pelepasan energi yang berasal dari …",
+      jawaban: [
+        "Proses sedimentasi",
+        "Proses erosi",
+        "Aktivitas vulkanisme",
+        "Aktivitas atmosfer",
+        "Gerakan lempeng bumi"
+      ],
+      jawabanBenar: "Gerakan lempeng bumi",
     ),
   ];
 }

@@ -17,7 +17,7 @@ class QuizLogic extends GetxController {
 
   @override
   void onInit() {
-    title = Get.arguments[0];
+    title = Get.arguments.length > 0 ? Get.arguments[0] : 'Evaluasi Akhir';
     state.quizList = _appService.getQuizData(materi: title);
     startTimer();
     super.onInit();

@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../../domain/quiz/model/quiz_model.dart';
+
 class QuizState {
   var activeSoal = 0.obs;
   var selectedJawaban = Rxn<String>();
@@ -17,16 +19,4 @@ class QuizState {
     'D',
     'E',
   ];
-}
-
-class QuizModel {
-  final String soal;
-  final List<String> jawaban;
-  final String jawabanBenar;
-
-  QuizModel({
-    required this.soal,
-    required this.jawaban,
-    required this.jawabanBenar,
-  });
 }

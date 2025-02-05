@@ -4,7 +4,8 @@ import 'package:terralith/features/domain/quiz/interface/quiz_repository_base.da
 import 'package:terralith/features/domain/quiz/model/quiz_result_model.dart';
 import 'package:terralith/features/infrastructure/quiz/quiz_local_data_source.dart';
 import 'package:terralith/features/infrastructure/quiz/quiz_remote_data_source.dart';
-import 'package:terralith/features/presentation/main/materi/quiz/quiz_state.dart';
+
+import '../domain/quiz/model/quiz_model.dart';
 
 class QuizAppService implements QuizRepositoryBase {
   final QuizLocalDataSource _localDataSource = QuizLocalDataSource();
@@ -22,7 +23,7 @@ class QuizAppService implements QuizRepositoryBase {
       case 'Risiko Bencana dan Mitigasinya':
         return _localDataSource.bencanaQuiz;
       default:
-        return _localDataSource.litosferQuiz;
+        return _localDataSource.evaluasiAkhir;
     }
   }
 
