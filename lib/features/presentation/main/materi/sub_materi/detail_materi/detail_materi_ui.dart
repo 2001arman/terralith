@@ -49,7 +49,7 @@ class _DetailMateriUiState extends State<DetailMateriUi> {
   @override
   void dispose() async {
     _debounce?.cancel();
-    await recordProgress();
+    recordProgress();
     super.dispose();
   }
 
