@@ -24,7 +24,7 @@ class UsernameLogic extends GetxController {
     data.fold(
       (l) => EasyLoading.showError(l.message!),
       (r) {
-        usernameController.text = r.name;
+        usernameController.text = r?.name ?? '';
         _globalVariable.userData.value = r;
       },
     );

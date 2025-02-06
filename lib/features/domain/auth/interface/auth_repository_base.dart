@@ -8,7 +8,7 @@ abstract class AuthRepositoryBase {
     required String password,
   });
 
-  Future<Either<FirebaseException, UserModel>> getUserData();
+  Future<Either<FirebaseException, UserModel?>> getUserData();
   Future<Either<FirebaseException, bool>> updateUserName({
     required String name,
   });

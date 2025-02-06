@@ -25,7 +25,7 @@ class AuthDataSource implements AuthRepositoryBase {
   }
 
   @override
-  Future<Either<FirebaseException, UserModel>> getUserData() async {
+  Future<Either<FirebaseException, UserModel?>> getUserData() async {
     try {
       final data = await db
           .collection('users')
@@ -33,13 +33,19 @@ class AuthDataSource implements AuthRepositoryBase {
           .get();
 
       if (data.docs.isEmpty) {
-        return Left(
-          FirebaseException(
-            message: 'Data is Empty',
-            code: '',
-            plugin: '',
-          ),
+        UserModel user = UserModel(
+          avatar: '1.png',
+          name: '',
+          userId: auth.currentUser!.uid,
+          email: auth.currentUser!.email ?? '',
         );
+        await db.collection('users').add({
+          'name': '',
+          'email': auth.currentUser!.email,
+          'avatar': '1.png',
+          'userId': auth.currentUser!.uid,
+        });
+        return Right(user);
       }
 
       final user = data.docs.first.data();
@@ -63,12 +69,13 @@ class AuthDataSource implements AuthRepositoryBase {
         await querySnapshot.docs.first.reference.update({'name': name});
         return const Right(true);
       } else {
-        return Left(
-          FirebaseException(
-            plugin: 'Firestore',
-            message: 'No user document found with the given userId',
-          ),
-        );
+        await db.collection('users').add({
+          'name': name,
+          'email': auth.currentUser!.email,
+          'avatar': '1.png',
+          'userId': auth.currentUser!.uid,
+        });
+        return const Right(true);
       }
     } on FirebaseException catch (e) {
       return Left(e);

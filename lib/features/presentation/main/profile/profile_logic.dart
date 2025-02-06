@@ -19,7 +19,7 @@ class ProfileLogic extends GetxController {
 
   @override
   void onInit() {
-    String avatar = globalVariable.userData.value!.avatar;
+    String avatar = globalVariable.userData.value?.avatar ?? '1.png';
     state.activeAvatar.value = avatar;
     super.onInit();
   }
@@ -45,7 +45,7 @@ class ProfileLogic extends GetxController {
 
   void ubahProfileDialog() {
     TextEditingController nameController =
-        TextEditingController(text: globalVariable.userData.value!.name);
+        TextEditingController(text: globalVariable.userData.value?.name);
     Get.bottomSheet(
       Container(
         width: double.infinity,
@@ -69,7 +69,7 @@ class ProfileLogic extends GetxController {
             ContainerTextFormField(
               title: 'Alamat Email',
               controller: TextEditingController(
-                  text: globalVariable.userData.value!.email),
+                  text: firebase.currentUser?.email ?? ''),
               isReadOnly: true,
               showEditIcon: false,
             ),

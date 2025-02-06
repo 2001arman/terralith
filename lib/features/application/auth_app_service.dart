@@ -13,7 +13,7 @@ class AuthAppService {
   }) =>
       _repository.login(email: email, password: password);
 
-  Future<Either<FirebaseException, UserModel>> getUserData() =>
+  Future<Either<FirebaseException, UserModel?>> getUserData() =>
       _repository.getUserData();
 
   Future<Either<FirebaseException, bool>> updateUserName(
