@@ -227,7 +227,6 @@ class HasilEvaluasiUi extends StatelessWidget {
                       }
 
                       UserModel userModel = userSnapshot.data!;
-                      Get.log('cek usserModel ${userModel.name}');
 
                       return Container(
                         width: double.infinity,

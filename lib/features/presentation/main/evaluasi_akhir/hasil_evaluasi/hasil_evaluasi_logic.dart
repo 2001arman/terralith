@@ -37,7 +37,6 @@ class HasilEvaluasiLogic extends GetxController {
   }
 
   Future<UserModel> getUserData({required String userId}) async {
-    Get.log('cek userid dong $userId');
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
     // Fetch user data using userId

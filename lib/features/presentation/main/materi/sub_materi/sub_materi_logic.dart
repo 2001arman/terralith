@@ -26,7 +26,7 @@ class SubMateriLogic extends GetxController {
     final data = await _appService.getSubMateriProgress(materi: materi.title);
     EasyLoading.dismiss();
     data.fold(
-      (l) => Get.log('error nih bos $l'),
+      (l) => EasyLoading.showError(l.message!),
       (subMateriProgress) {
         for (var data in subMateriProgress) {
           final progressData = materi.subMateri.firstWhereOrNull(

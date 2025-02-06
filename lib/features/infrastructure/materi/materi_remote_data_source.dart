@@ -120,7 +120,6 @@ class MateriRemoteDataSource implements MateriRepositoryBase {
 
       // Convert Firestore documents to SubMateriModel list
       List<SubMateriModel> subMateriList = materiProgressQuery.docs.map((doc) {
-        Get.log('cek datanya dong ${doc.data}');
         return SubMateriModel.fromJson(doc.data());
       }).toList();
 
