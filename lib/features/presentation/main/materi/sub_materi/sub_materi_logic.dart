@@ -4,11 +4,13 @@ import 'package:terralith/features/application/materi_app_service.dart';
 import 'package:terralith/features/domain/materi/model/materi_model.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_state.dart';
 
+import '../../main_logic.dart';
 import 'detail_materi/detail_materi_ui.dart';
 
 class SubMateriLogic extends GetxController {
   final SubMateriState state = SubMateriState();
   final _appService = Get.find<MateriAppService>();
+  final _mainLogic = Get.find<MainLogic>();
 
   late MateriModel materi;
 
@@ -55,8 +57,13 @@ class SubMateriLogic extends GetxController {
     );
 
     if (progressData != null) {
-      progressData.progress.value = progress;
-      refresh();
+      if (progress > progressData.progress.value) {
+        progressData.progress.value = progress;
+        refresh();
+        _mainLogic.updateLastProgress(
+          data: SubMateriModel(title: title, asset: '', progress: progress.obs),
+        );
+      }
     }
   }
 }
