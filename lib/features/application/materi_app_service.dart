@@ -26,4 +26,7 @@ class MateriAppService {
 
   Future<Either<FirebaseException, SubMateriModel>> getLatestProgress() =>
       _repository.getLatestProgress();
+
+  Future<Either<FirebaseException, int>> getMateriDone() =>
+      _repository.getMateriDone();
 }

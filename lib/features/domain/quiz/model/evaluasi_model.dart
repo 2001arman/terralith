@@ -18,7 +18,7 @@ class EvaluasiModel {
       benar: json['benar'] as int,
       salah: json['salah'] as int,
       nilai: json['nilai'] as int,
-      createdAt: json['createdAt'] as DateTime,
+      createdAt: DateTime.now(),
     );
   }
 }

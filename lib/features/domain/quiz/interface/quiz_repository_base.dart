@@ -16,4 +16,8 @@ abstract class QuizRepositoryBase {
   Future<Either<FirebaseException, bool>> createEvaluasiAkhir({
     required EvaluasiModel evaluasi,
   });
+
+  Future<Either<FirebaseException, EvaluasiModel?>> getEvaluasiResult();
+
+  Future<Either<FirebaseException, int>> getEvaluasiRank();
 }

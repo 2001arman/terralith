@@ -146,4 +146,43 @@ class QuizRemoteDataSource {
       return Left(e);
     }
   }
+
+  Future<Either<FirebaseException, EvaluasiModel?>> getEvaluasiResult() async {
+    try {
+      final userDoc = await db
+          .collection('evaluasi_akhir')
+          .where('userId', isEqualTo: auth.currentUser!.uid)
+          .get();
+
+      if (userDoc.docs.isEmpty) {
+        return const Right(null);
+      }
+
+      return Right(
+        EvaluasiModel.fromJson(userDoc.docs.first.data()),
+      );
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
+
+  Future<Either<FirebaseException, int>> getEvaluasiRank() async {
+    try {
+      final evaluasiData = await db
+          .collection('evaluasi_akhir')
+          .orderBy('createdAt', descending: false)
+          .get();
+
+      List<EvaluasiModel> results = [];
+      for (var doc in evaluasiData.docs) {
+        results.add(EvaluasiModel.fromJson(doc.data()));
+      }
+
+      return Right(
+        results.indexWhere((data) => data.userId == auth.currentUser!.uid),
+      );
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
 }

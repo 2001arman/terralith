@@ -145,111 +145,110 @@ class StatisticUi extends StatelessWidget {
     }
 
     Widget evaluasiWidget() {
-      return Container(
-        width: double.infinity,
-        height: 91,
-        margin: const EdgeInsets.only(top: 18),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: kBlueColor,
-        ),
-        child: Row(
-          children: [
-            const Spacer(flex: 3),
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: const Color(0xFFEBF3F8),
-              ),
-              child: Center(
-                child: Text(
-                  'Evaluasi Akhir',
-                  style:
-                      blueTextStyle.copyWith(fontWeight: medium, fontSize: 12),
-                  textAlign: TextAlign.center,
+      return Obx(
+        () => Container(
+          width: double.infinity,
+          height: 91,
+          margin: const EdgeInsets.only(top: 18),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: kBlueColor,
+          ),
+          child: Row(
+            children: [
+              const Spacer(flex: 3),
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: const Color(0xFFEBF3F8),
+                ),
+                child: Center(
+                  child: Text(
+                    'Evaluasi Akhir',
+                    style: blueTextStyle.copyWith(
+                        fontWeight: medium, fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-            ),
-            const Spacer(),
-            Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: kYellowColor,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '-',
-                    style: whiteTextStyle.copyWith(
-                        fontWeight: bold, fontSize: 24, height: 24 / 24),
-                  ),
-                  Text(
-                    'Poin',
-                    style: whiteTextStyle.copyWith(fontWeight: medium),
-                  ),
-                ],
-              ),
-            ),
-            const Spacer(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
+              const Spacer(),
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: kYellowColor,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/icons/correct.png',
-                      width: 25,
-                      height: 25,
+                    Text(
+                      state.evaluasi.value?.nilai.toString() ?? '-',
+                      style: whiteTextStyle.copyWith(
+                          fontWeight: bold, fontSize: 24, height: 24 / 24),
                     ),
                     Text(
-                      '- soal',
+                      'Poin',
                       style: whiteTextStyle.copyWith(fontWeight: medium),
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: 68,
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/icons/wrong.png',
-                        width: 25,
-                        height: 25,
-                      ),
-                      Text(
-                        '- soal',
-                        style: whiteTextStyle.copyWith(fontWeight: medium),
-                      ),
-                    ],
-                  ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 7,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          'assets/icons/correct.png',
+                          width: 25,
+                          height: 25,
+                        ),
+                        Text(
+                          "${state.evaluasi.value?.benar.toString() ?? '-'} soal",
+                          style: whiteTextStyle.copyWith(fontWeight: medium),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(
+                          'assets/icons/wrong.png',
+                          width: 25,
+                          height: 25,
+                        ),
+                        Text(
+                          "${state.evaluasi.value?.salah.toString() ?? '-'} soal",
+                          style: whiteTextStyle.copyWith(fontWeight: medium),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/icons/cup.png',
+                          width: 25,
+                          height: 25,
+                        ),
+                        const SizedBox(width: 0),
+                        Text(
+                          "${state.rank.value == -1 ? '-' : state.rank.value + 1}/36",
+                          style: whiteTextStyle.copyWith(fontWeight: medium),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 67,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/icons/cup.png',
-                        width: 25,
-                        height: 25,
-                      ),
-                      const SizedBox(width: 0),
-                      Text(
-                        '-/36',
-                        style: whiteTextStyle.copyWith(fontWeight: medium),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(flex: 3),
-          ],
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -279,10 +278,12 @@ class StatisticUi extends StatelessWidget {
                   value: '10',
                 ),
                 const SizedBox(width: 20),
-                topItemWidget(
-                  icon: 'assets/icons/statistic-done.png',
-                  title: 'Selesai',
-                  value: '7',
+                Obx(
+                  () => topItemWidget(
+                    icon: 'assets/icons/statistic-done.png',
+                    title: 'Selesai',
+                    value: state.materiDone.value.toString(),
+                  ),
                 ),
               ],
             ),

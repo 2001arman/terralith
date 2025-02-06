@@ -43,4 +43,12 @@ class QuizAppService implements QuizRepositoryBase {
   Future<Either<FirebaseException, bool>> createEvaluasiAkhir(
           {required EvaluasiModel evaluasi}) =>
       _remoteDataSource.createEvaluasiAkhir(evaluasi: evaluasi);
+
+  @override
+  Future<Either<FirebaseException, EvaluasiModel?>> getEvaluasiResult() =>
+      _remoteDataSource.getEvaluasiResult();
+
+  @override
+  Future<Either<FirebaseException, int>> getEvaluasiRank() =>
+      _remoteDataSource.getEvaluasiRank();
 }
