@@ -97,7 +97,7 @@ class VideoDetailUi extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Praktik kependikan mata pelajaran Geografi Kelas XI  SMK Darul ‘Ulum Muhammadiyah Galur materi Dinamika Kependudukan',
+                      logic.item.description,
                       style: blackTextStyle.copyWith(
                         fontSize: 12,
                       ),
