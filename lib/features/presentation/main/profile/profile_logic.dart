@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/profile/profile_state.dart';
 import 'package:terralith/utility/shared/constants/constants_ui.dart';
@@ -7,9 +8,11 @@ import 'package:terralith/utility/shared/widgets/container_text_form_field.dart'
 import 'package:terralith/utility/utils/global_variable.dart';
 
 import '../../../../utility/shared/widgets/custom_main_button.dart';
+import '../../../application/auth_app_service.dart';
 import '../../auth/login/login_ui.dart';
 
 class ProfileLogic extends GetxController {
+  final _appService = Get.find<AuthAppService>();
   final GlobalVariable globalVariable = Get.find<GlobalVariable>();
   final firebase = FirebaseAuth.instance;
   ProfileState state = ProfileState();
@@ -26,7 +29,23 @@ class ProfileLogic extends GetxController {
     Get.offAllNamed(LoginUi.namePath);
   }
 
+  void updateName({required String name}) async {
+    EasyLoading.show();
+    final data = await _appService.updateUserName(name: name);
+    EasyLoading.dismiss();
+    data.fold(
+      (l) => EasyLoading.showError(l.message!),
+      (r) {
+        globalVariable.userData.value!.name = name;
+        globalVariable.userData.update((data) => data!.name = name);
+        Get.back();
+      },
+    );
+  }
+
   void ubahProfileDialog() {
+    TextEditingController nameController =
+        TextEditingController(text: globalVariable.userData.value!.name);
     Get.bottomSheet(
       Container(
         width: double.infinity,
@@ -44,14 +63,13 @@ class ProfileLogic extends GetxController {
           children: [
             ContainerTextFormField(
               title: 'Nama',
-              controller: TextEditingController(
-                  text: globalVariable.userData.value!.name),
+              controller: nameController,
             ),
             const SizedBox(height: 12),
             ContainerTextFormField(
               title: 'Alamat Email',
-              controller:
-                  TextEditingController(text: '2001armanmaulana@gmail.com'),
+              controller: TextEditingController(
+                  text: globalVariable.userData.value!.email),
               isReadOnly: true,
               showEditIcon: false,
             ),
@@ -60,7 +78,7 @@ class ProfileLogic extends GetxController {
               title: 'Simpan',
               fontWeight: bold,
               fontSize: 16,
-              onTap: Get.back,
+              onTap: () => updateName(name: nameController.text),
               height: 50,
             ),
           ],

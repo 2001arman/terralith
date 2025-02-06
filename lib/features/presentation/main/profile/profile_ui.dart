@@ -128,10 +128,12 @@ class ProfileUi extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                logic.globalVariable.userData.value?.name ?? '',
-                style:
-                    blueTextStyle.copyWith(fontSize: 24, fontWeight: extraBold),
+              Obx(
+                () => Text(
+                  logic.globalVariable.userData.value?.name ?? '',
+                  style: blueTextStyle.copyWith(
+                      fontSize: 24, fontWeight: extraBold),
+                ),
               ),
               Text(
                 logic.firebase.currentUser?.email ?? '',
