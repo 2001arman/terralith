@@ -180,30 +180,34 @@ class EvaluasiAkhirUi extends StatelessWidget {
         ),
         bottomNavigationBar: SafeArea(
           child: Obx(
-            () => Row(
-              children: [
-                const SizedBox(width: 20),
-                Visibility(
-                  visible: state.activeSoal.value != 0,
-                  replacement: const Spacer(),
-                  child: button(
-                    title: 'Sebelumnya',
-                    isNext: true,
-                    onTap: () => state.activeSoal.value--,
+            () => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Row(
+                children: [
+                  const SizedBox(width: 20),
+                  Visibility(
+                    visible: state.activeSoal.value != 0,
+                    replacement: const Spacer(),
+                    child: button(
+                      title: 'Sebelumnya',
+                      isNext: true,
+                      onTap: () => state.activeSoal.value--,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 20),
-                Visibility(
-                  visible: state.activeSoal.value != state.quizList.length - 1,
-                  replacement: const Spacer(),
-                  child: button(
-                    title: 'Selanjutnya',
-                    isNext: false,
-                    onTap: () => state.activeSoal.value++,
+                  const SizedBox(width: 20),
+                  Visibility(
+                    visible:
+                        state.activeSoal.value != state.quizList.length - 1,
+                    replacement: const Spacer(),
+                    child: button(
+                      title: 'Selanjutnya',
+                      isNext: false,
+                      onTap: () => state.activeSoal.value++,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 20),
-              ],
+                  const SizedBox(width: 20),
+                ],
+              ),
             ),
           ),
         ),

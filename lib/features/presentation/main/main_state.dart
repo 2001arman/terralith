@@ -1,63 +1,63 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
 
 import 'package:get/get.dart';
+
 import 'package:terralith/features/domain/materi/model/materi_model.dart';
 import 'package:terralith/features/presentation/main/evaluasi_akhir/evaluasi_akhir_ui.dart';
 import 'package:terralith/features/presentation/main/kompetensi/kompetensi_ui.dart';
+import 'package:terralith/features/presentation/main/main_logic.dart';
 import 'package:terralith/features/presentation/main/materi/materi_ui.dart';
 import 'package:terralith/features/presentation/main/pengembang/pengembang_ui.dart';
 import 'package:terralith/features/presentation/main/profile/profile_ui.dart';
 import 'package:terralith/features/presentation/main/video/video_ui.dart';
-import 'package:terralith/utility/utils/custom_dialog.dart';
 
 class MainState {
+  final MainLogic logic;
+
   Rx<SubMateriModel> activeProgress = SubMateriModel(
     title: 'Pengertian Litosfer',
     asset: '',
     progress: 0.0.obs,
   ).obs;
 
-  List<HomeItemModel> homeItems = [
-    HomeItemModel(
-      name: 'Kompetensi',
-      icon: 'assets/icons/kompetensi.png',
-      path: KompetensiUi.namePath,
-    ),
-    HomeItemModel(
-      name: 'Materi',
-      icon: 'assets/icons/materi.png',
-      path: MateriUi.namePath,
-    ),
-    HomeItemModel(
-      name: 'Video',
-      icon: 'assets/icons/video.png',
-      path: VideoUi.namePath,
-    ),
-    HomeItemModel(
-      name: 'Evaluasi Akhir',
-      icon: 'assets/icons/evaluasi-akhir.png',
-      path: EvaluasiAkhirUi.namePath,
-      onTap: () => CustomDialog.showQuizDialog(
-        onTap: () {
-          Get.back();
-          Get.toNamed(EvaluasiAkhirUi.namePath);
-        },
-        totalSoal: 25,
-        totalMenit: 25,
-        title: 'evaluasi',
+  late final List<HomeItemModel> homeItems;
+
+  MainState(this.logic) {
+    homeItems = [
+      HomeItemModel(
+        name: 'Kompetensi',
+        icon: 'assets/icons/kompetensi.png',
+        path: KompetensiUi.namePath,
       ),
-    ),
-    HomeItemModel(
-      name: 'Profil',
-      icon: 'assets/icons/profile.png',
-      path: ProfileUi.namePath,
-    ),
-    HomeItemModel(
-      name: 'Pengembang',
-      icon: 'assets/icons/pengembang.png',
-      path: PengembangUi.namePath,
-    ),
-  ];
+      HomeItemModel(
+        name: 'Materi',
+        icon: 'assets/icons/materi.png',
+        path: MateriUi.namePath,
+      ),
+      HomeItemModel(
+        name: 'Video',
+        icon: 'assets/icons/video.png',
+        path: VideoUi.namePath,
+      ),
+      HomeItemModel(
+        name: 'Evaluasi Akhir',
+        icon: 'assets/icons/evaluasi-akhir.png',
+        path: EvaluasiAkhirUi.namePath,
+        onTap: logic.gotoEvaluasi, // Now logic can be accessed here
+      ),
+      HomeItemModel(
+        name: 'Profil',
+        icon: 'assets/icons/profile.png',
+        path: ProfileUi.namePath,
+      ),
+      HomeItemModel(
+        name: 'Pengembang',
+        icon: 'assets/icons/pengembang.png',
+        path: PengembangUi.namePath,
+      ),
+    ];
+  }
 }
 
 class HomeItemModel {

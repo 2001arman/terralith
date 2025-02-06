@@ -121,12 +121,15 @@ class QuizRemoteDataSource {
 
       if (userDoc.docs.isNotEmpty) {
         String userId = userDoc.docs.first.id;
+        EvaluasiModel evaluasiModel =
+            EvaluasiModel.fromJson(userDoc.docs.first.data());
 
         await db.collection('evaluasi_akhir').doc(userId).update({
           'nilai': evaluasi.nilai,
           'salah': evaluasi.salah,
           'benar': evaluasi.benar,
           'createdAt': evaluasi.createdAt,
+          'try_access': evaluasiModel.tryAccess + 1,
         });
 
         return const Right(true);
@@ -138,6 +141,7 @@ class QuizRemoteDataSource {
           'benar': evaluasi.benar,
           'createdAt': evaluasi.createdAt,
           'userId': auth.currentUser!.uid,
+          'try_access': evaluasi.tryAccess,
         });
       }
 
