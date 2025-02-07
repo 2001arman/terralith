@@ -10,6 +10,7 @@ class UsernameLogic extends GetxController {
   final _appService = Get.find<AuthAppService>();
   final _globalVariable = Get.find<GlobalVariable>();
   TextEditingController usernameController = TextEditingController();
+  final formKeyName = GlobalKey<FormState>();
 
   @override
   void onInit() {
@@ -31,6 +32,8 @@ class UsernameLogic extends GetxController {
   }
 
   void updateName() async {
+    bool validate = formKeyName.currentState!.validate();
+    if (validate == false) return;
     EasyLoading.show();
     final data =
         await _appService.updateUserName(name: usernameController.text);

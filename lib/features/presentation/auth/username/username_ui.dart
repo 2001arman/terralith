@@ -39,25 +39,34 @@ class UsernameUi extends StatelessWidget {
                 ],
               ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Masukkan Nama Kamu',
-                  style: whiteTextStyle.copyWith(
-                    fontWeight: medium,
-                    fontSize: 15,
+            child: Form(
+              key: logic.formKeyName,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Masukkan Nama Kamu',
+                    style: whiteTextStyle.copyWith(
+                      fontWeight: medium,
+                      fontSize: 15,
+                    ),
                   ),
-                ),
-                CustomTextFormField(
-                  controller: logic.usernameController,
-                  textAlign: TextAlign.center,
-                ),
-                CustomMainButton(
-                  title: 'Lanjutkan',
-                  onTap: logic.updateName,
-                )
-              ],
+                  CustomTextFormField(
+                    controller: logic.usernameController,
+                    textAlign: TextAlign.center,
+                    validator: (data) {
+                      if (data == null || data.isEmpty || data == '') {
+                        return 'Nama tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                  ),
+                  CustomMainButton(
+                    title: 'Lanjutkan',
+                    onTap: logic.updateName,
+                  )
+                ],
+              ),
             ),
           ),
         ),
