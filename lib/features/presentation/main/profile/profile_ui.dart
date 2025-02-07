@@ -13,24 +13,6 @@ class ProfileUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget itemWidget({
-      required String value,
-      required String name,
-    }) {
-      return Column(
-        children: [
-          Text(
-            value,
-            style: blackTextStyle.copyWith(fontSize: 26, fontWeight: semiBold),
-          ),
-          Text(
-            name,
-            style: blackTextStyle.copyWith(fontSize: 14, fontWeight: light),
-          ),
-        ],
-      );
-    }
-
     Widget containerMenuItem({
       required String icon,
       required String title,
@@ -99,7 +81,7 @@ class ProfileUi extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               GestureDetector(
                 onTap: logic.showChangeAvatar,
                 child: SizedBox(
@@ -139,26 +121,7 @@ class ProfileUi extends StatelessWidget {
                 logic.firebase.currentUser?.email ?? '',
                 style: blueTextStyle.copyWith(fontSize: 16, fontWeight: light),
               ),
-              const SizedBox(height: 23),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  itemWidget(value: '7/11', name: 'Materi'),
-                  Container(
-                    height: 37,
-                    width: 1,
-                    color: kBlackColor,
-                  ),
-                  itemWidget(value: '230', name: 'Poin'),
-                  Container(
-                    height: 37,
-                    width: 1,
-                    color: kBlackColor,
-                  ),
-                  itemWidget(value: '3/4', name: 'Kuis'),
-                ],
-              ),
-              const SizedBox(height: 34),
+              const SizedBox(height: 60),
               containerMenuItem(
                 icon: 'assets/icons/user.png',
                 title: 'Ubah Profil',
