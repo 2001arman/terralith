@@ -47,9 +47,9 @@ class PengembangUi extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 60),
-            Image.asset(
-              'assets/images/kita.png',
-            ),
+            // Image.asset(
+            //   'assets/images/kita.png',
+            // ),
             const SizedBox(height: 40),
             rowText(title: 'Nama', description: 'Tata Azkia Azzahra'),
             rowText(title: 'NIM', description: '21405241015'),
