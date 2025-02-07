@@ -43,6 +43,23 @@ class ProfileLogic extends GetxController {
     );
   }
 
+  void changeAvatar({required int selectedIndex}) async {
+    String avatar = state.availableAvatar[selectedIndex];
+    EasyLoading.show();
+    final data = await _appService.updateUserAvatar(avatar: avatar);
+    EasyLoading.dismiss();
+    data.fold(
+      (l) => EasyLoading.showError(l.message!),
+      (r) {
+        Get.back();
+        state.activeAvatar.value =
+            state.availableAvatar[state.selectedAvatarIndex.value];
+        globalVariable.userData.value!.avatar = state.activeAvatar.value;
+        globalVariable.userData.refresh();
+      },
+    );
+  }
+
   void ubahProfileDialog() {
     TextEditingController nameController =
         TextEditingController(text: globalVariable.userData.value?.name);
@@ -131,14 +148,8 @@ class ProfileLogic extends GetxController {
               ),
             ),
             GestureDetector(
-              onTap: () {
-                Get.back();
-                state.activeAvatar.value =
-                    state.availableAvatar[state.selectedAvatarIndex.value];
-                globalVariable.userData.value!.avatar =
-                    state.activeAvatar.value;
-                globalVariable.userData.refresh();
-              },
+              onTap: () =>
+                  changeAvatar(selectedIndex: state.selectedAvatarIndex.value),
               child: Container(
                 width: 50,
                 height: 50,

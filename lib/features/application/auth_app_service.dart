@@ -20,6 +20,10 @@ class AuthAppService {
           {required String name}) =>
       _repository.updateUserName(name: name);
 
+  Future<Either<FirebaseException, bool>> updateUserAvatar(
+          {required String avatar}) =>
+      _repository.updateUserAvatar(avatar: avatar);
+
   Future<Either<FirebaseException, bool>> sendOTP() => _repository.sendOTP();
 
   Future<Either<FirebaseException, bool>> updatePassword({

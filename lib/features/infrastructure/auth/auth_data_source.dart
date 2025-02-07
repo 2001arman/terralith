@@ -83,6 +83,33 @@ class AuthDataSource implements AuthRepositoryBase {
   }
 
   @override
+  Future<Either<FirebaseException, bool>> updateUserAvatar(
+      {required String avatar}) async {
+    try {
+      final querySnapshot = await db
+          .collection('users')
+          .where('userId', isEqualTo: auth.currentUser!.uid)
+          .limit(1) // Ensure only one document is fetched
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        await querySnapshot.docs.first.reference.update({'avatar': avatar});
+        return const Right(true);
+      } else {
+        await db.collection('users').add({
+          'name': '',
+          'email': auth.currentUser!.email,
+          'avatar': avatar,
+          'userId': auth.currentUser!.uid,
+        });
+        return const Right(true);
+      }
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
   Future<Either<FirebaseException, bool>> sendOTP() async {
     try {
       await auth.sendPasswordResetEmail(email: auth.currentUser?.email ?? '');

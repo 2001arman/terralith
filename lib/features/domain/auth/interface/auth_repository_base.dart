@@ -12,6 +12,9 @@ abstract class AuthRepositoryBase {
   Future<Either<FirebaseException, bool>> updateUserName({
     required String name,
   });
+  Future<Either<FirebaseException, bool>> updateUserAvatar({
+    required String avatar,
+  });
 
   Future<Either<FirebaseException, bool>> sendOTP();
   Future<Either<FirebaseException, bool>> updatePassword({
