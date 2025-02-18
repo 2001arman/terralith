@@ -45,6 +45,7 @@ class KompetensiUi extends StatelessWidget {
             },
             textStyle: blackTextStyle,
           ),
+          const SizedBox(height: 40),
         ],
       ),
     );
