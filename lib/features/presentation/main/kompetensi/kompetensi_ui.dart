@@ -19,7 +19,7 @@ class KompetensiUi extends StatelessWidget {
         backgroundColor: kBlueSemiLightColor,
         shadowColor: kBlackColor.withValues(alpha: 0.25),
         title: Text(
-          'Kompetensi',
+          'CP dan ATP',
           style: blueTextStyle.copyWith(fontSize: 20, fontWeight: extraBold),
         ),
         centerTitle: true,

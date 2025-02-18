@@ -26,7 +26,7 @@ class MainState {
   MainState(this.logic) {
     homeItems = [
       HomeItemModel(
-        name: 'Kompetensi',
+        name: 'CP dan ATP',
         icon: 'assets/icons/kompetensi.png',
         path: KompetensiUi.namePath,
       ),

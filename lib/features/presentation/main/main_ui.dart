@@ -182,11 +182,12 @@ class MainUi extends StatelessWidget {
                       state.homeItems[index].icon,
                       width: 90,
                     ),
-                    FittedBox(
+                    Expanded(
                       child: Text(
                         state.homeItems[index].name,
                         style: darkBlueTextStyle.copyWith(
                             fontSize: 16, fontWeight: extraBold),
+                        textAlign: TextAlign.center,
                       ),
                     )
                   ],
