@@ -42,15 +42,10 @@ class PengembangUi extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.all(30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 60),
-            // Image.asset(
-            //   'assets/images/kita.png',
-            // ),
-            const SizedBox(height: 40),
             rowText(title: 'Nama', description: 'Tata Azkia Azzahra'),
             rowText(title: 'NIM', description: '21405241015'),
             rowText(title: 'Prodi', description: 'Pendidikan Geografi'),
