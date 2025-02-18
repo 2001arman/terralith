@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:terralith/features/presentation/main/materi/sub_materi/sub_materi_logic.dart';
-import 'package:terralith/utility/utils/custom_dialog.dart';
 
 import '../../../../../utility/shared/constants/constants_ui.dart';
-import '../quiz/quiz_ui.dart';
 
 class SubMateriUi extends StatelessWidget {
   static const String namePath = '/sub_materi_page';
@@ -172,18 +170,7 @@ class SubMateriUi extends StatelessWidget {
             title: 'Kuis ${logic.materi.title}',
             titlePadding: 4,
             content: kuisInfoWidget(),
-            onTap: () => CustomDialog.showQuizDialog(
-              onTap: () {
-                Get.back();
-                Get.toNamed(
-                  QuizUi.namePath,
-                  arguments: [logic.materi],
-                );
-              },
-              totalSoal: 5,
-              totalMenit: 5,
-              title: 'kuis',
-            ),
+            onTap: logic.gotoQuiz,
           ),
         ],
       ),

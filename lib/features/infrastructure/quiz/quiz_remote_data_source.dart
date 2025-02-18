@@ -9,7 +9,7 @@ class QuizRemoteDataSource {
   final auth = FirebaseAuth.instance;
 
   Future<Either<FirebaseException, List<QuizResultModel>>>
-      getQuizResult() async {
+      getQuizResults() async {
     try {
       final userDoc = await db
           .collection('users')
@@ -42,6 +42,45 @@ class QuizRemoteDataSource {
       }
 
       return Right(results);
+    } on FirebaseException catch (e) {
+      return Left(e);
+    }
+  }
+
+  Future<Either<FirebaseException, QuizResultModel?>> getQuizResult({
+    required String title,
+  }) async {
+    try {
+      final userDoc = await db
+          .collection('users')
+          .where('userId', isEqualTo: auth.currentUser!.uid)
+          .get();
+
+      if (userDoc.docs.isEmpty) {
+        return Left(
+          FirebaseException(
+            message: 'User not found',
+            code: 'user-not-found',
+            plugin: 'firebase',
+          ),
+        );
+      }
+
+      // Get the first user document ID
+      String userId = userDoc.docs.first.id;
+
+      // Check if a document with the same 'materi' exists
+      final materiProgressQuery = await db
+          .collection('users')
+          .doc(userId)
+          .collection('quiz_result')
+          .where('title', isEqualTo: title)
+          .get();
+      if (materiProgressQuery.docs.isNotEmpty) {
+        return Right(
+            QuizResultModel.fromJson(materiProgressQuery.docs.first.data()));
+      }
+      return const Right(null);
     } on FirebaseException catch (e) {
       return Left(e);
     }

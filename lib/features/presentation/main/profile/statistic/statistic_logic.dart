@@ -19,7 +19,7 @@ class StatisticLogic extends GetxController {
   }
 
   Future<void> getQuizData() async {
-    final data = await _appService.getQuizResult();
+    final data = await _appService.getQuizResults();
     return data.fold(
       (l) => EasyLoading.showError(l.message!),
       (r) {

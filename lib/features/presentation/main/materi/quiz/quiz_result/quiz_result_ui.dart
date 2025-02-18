@@ -171,10 +171,11 @@ class QuizResultUi extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    buttonIconWidget(
-                      icon: 'assets/icons/ulangi.png',
-                      onTap: logic.ulangiTest,
-                    ),
+                    if (logic.result.point < 70)
+                      buttonIconWidget(
+                        icon: 'assets/icons/ulangi.png',
+                        onTap: logic.ulangiTest,
+                      ),
                     const SizedBox(width: 18),
                     buttonIconWidget(
                       icon: 'assets/icons/home.png',

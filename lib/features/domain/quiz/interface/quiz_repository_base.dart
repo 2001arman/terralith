@@ -8,7 +8,11 @@ import '../model/quiz_result_model.dart';
 abstract class QuizRepositoryBase {
   List<QuizModel> getQuizData({required String materi});
 
-  Future<Either<FirebaseException, List<QuizResultModel>>> getQuizResult();
+  Future<Either<FirebaseException, QuizResultModel?>> getQuizResult({
+    required String title,
+  });
+
+  Future<Either<FirebaseException, List<QuizResultModel>>> getQuizResults();
 
   Future<Either<FirebaseException, bool>> createQuizResult(
       {required QuizResultModel quizResult});
