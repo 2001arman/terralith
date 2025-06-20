@@ -103,7 +103,7 @@ class SubMateriUi extends StatelessWidget {
                 style: blueTextStyle.copyWith(fontWeight: light, fontSize: 11),
               ),
               Text(
-                '5 butir',
+                '10 butir',
                 style:
                     blueTextStyle.copyWith(fontWeight: extraBold, fontSize: 11),
               ),
@@ -116,7 +116,7 @@ class SubMateriUi extends StatelessWidget {
                 style: blueTextStyle.copyWith(fontWeight: light, fontSize: 11),
               ),
               Text(
-                '5 menit',
+                '10 menit',
                 style:
                     blueTextStyle.copyWith(fontWeight: extraBold, fontSize: 11),
               ),

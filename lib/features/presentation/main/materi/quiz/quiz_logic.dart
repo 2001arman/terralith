@@ -75,7 +75,7 @@ class QuizLogic extends GetxController {
     if (Get.isDialogOpen == true) {
       Get.back();
       if (benar) {
-        state.poin += 20;
+        state.poin += 10;
         state.soalBenar++;
       } else {
         state.soalSalah++;
@@ -92,7 +92,7 @@ class QuizLogic extends GetxController {
   void checkSoalDialog() {
     String jawabanBenar = state.quizList[state.activeSoal.value].jawabanBenar;
     bool benar = state.selectedJawaban.value == jawabanBenar;
-    int poin = benar ? 20 : 0;
+    int poin = benar ? 10 : 0;
     Get.dialog(
       Container(
         width: Get.width,

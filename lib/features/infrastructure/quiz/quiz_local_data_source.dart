@@ -62,6 +62,64 @@ class QuizLocalDataSource {
       ],
       jawabanBenar: 'Eksogen',
     ),
+    QuizModel(
+      soal:
+          'Litosfer merupakan lapisan padat terluar dari bumi yang tersusun oleh …',
+      jawaban: [
+        'Air dan udara',
+        'Batuan dan mineral',
+        'Tanah dan air',
+        'Pasir dan debu',
+        'Es dan gas',
+      ],
+      jawabanBenar: 'Batuan dan mineral',
+    ),
+    QuizModel(
+      soal: 'Berikut ini yang termasuk jenis batuan penyusun litosfer adalah …',
+      jawaban: [
+        'Basal, granit, dan batu bara',
+        'Granit, andesit, dan batu kapur',
+        'Pasir, tanah liat, dan aspal',
+        'Batu bara, tanah liat, dan air tanah',
+        'Batu apung, uap air, dan karang',
+      ],
+      jawabanBenar: 'Granit, andesit, dan batu kapur',
+    ),
+    QuizModel(
+      soal: 'Batuan beku terbentuk dari proses …',
+      jawaban: [
+        'Pelapukan batuan oleh cuaca',
+        'Pengendapan sedimen selama jutaan tahun',
+        'Pembekuan magma dari dalam bumi',
+        'Perubahan tekanan dan suhu terhadap batuan',
+        'Pemampatan fosil di dasar laut',
+      ],
+      jawabanBenar: 'Pembekuan magma dari dalam bumi',
+    ),
+    QuizModel(
+      soal:
+          'Tenaga geologi yang bersumber dari dalam bumi dan menyebabkan pergeseran lempeng serta pembentukan pegunungan disebut …',
+      jawaban: [
+        'Tenaga eksogen',
+        'Tenaga endogen',
+        'Tenaga atmosfer',
+        'Tenaga hidrosfer',
+        'Tenaga mekanik',
+      ],
+      jawabanBenar: 'Tenaga endogen',
+    ),
+    QuizModel(
+      soal:
+          'Peristiwa pelapukan dan erosi yang mengubah bentuk permukaan bumi disebabkan oleh …',
+      jawaban: [
+        'Magma dan lempeng bumi',
+        'Angin, air, dan suhu',
+        'Gaya gravitasi dan gempa',
+        'Vulkanisme dan tektonisme',
+        'Aktivitas matahari dan bintang',
+      ],
+      jawabanBenar: 'Angin, air, dan suhu',
+    ),
   ];
 
   List<QuizModel> endogenQuiz = [
@@ -125,6 +183,66 @@ class QuizLocalDataSource {
       ],
       jawabanBenar: 'Gempa daratan',
     ),
+    QuizModel(
+      soal:
+          'Gerakan lempeng tektonik secara horizontal yang menyebabkan patahan disebut …',
+      jawaban: [
+        'Gerak epirogenetik',
+        'Gerak orogenetik',
+        'Gerak vertikal',
+        'Gerak lateral',
+        'Gerak subduksi',
+      ],
+      jawabanBenar: 'Gerak lateral',
+    ),
+    QuizModel(
+      soal:
+          'Peristiwa keluarnya magma ke permukaan bumi melalui retakan disebut …',
+      jawaban: [
+        'Intrusi magma',
+        'Ekstrusi magma',
+        'Sedimentasi',
+        'Erosi',
+        'Lipatan',
+      ],
+      jawabanBenar: 'Ekstrusi magma',
+    ),
+    QuizModel(
+      soal:
+          'Letusan gunung api yang terjadi secara eksplosif disebabkan oleh …',
+      jawaban: [
+        'Tekanan gas dalam magma yang tinggi',
+        'Kedalaman magma yang sangat dangkal',
+        'Kadar air yang rendah dalam magma',
+        'Suhu magma yang terlalu rendah',
+        'Gerak peluruhan radioaktif',
+      ],
+      jawabanBenar: 'Tekanan gas dalam magma yang tinggi',
+    ),
+    QuizModel(
+      soal:
+          'Alat yang digunakan untuk mencatat kekuatan dan waktu gempa bumi adalah …',
+      jawaban: [
+        'Seismogram',
+        'Seismograf',
+        'Barometer',
+        'Termograf',
+        'Anemometer',
+      ],
+      jawabanBenar: 'Seismograf',
+    ),
+    QuizModel(
+      soal:
+          'Patahan atau retakan pada kerak bumi akibat tekanan dari dalam bumi disebut …',
+      jawaban: [
+        'Sesar',
+        'Lipatan',
+        'Subduksi',
+        'Kaldera',
+        'Episentrum',
+      ],
+      jawabanBenar: 'Sesar',
+    ),
   ];
 
   List<QuizModel> eksogenQuiz = [
@@ -186,6 +304,64 @@ class QuizLocalDataSource {
         'Proses penguapan air sungai berlangsung',
       ],
       jawabanBenar: 'Arus sungai melambat ketika memasuki perairan lebih luas',
+    ),
+    QuizModel(
+      soal: 'Proses pelapukan mekanik biasanya terjadi di daerah …',
+      jawaban: [
+        'Tropis basah dengan curah hujan tinggi',
+        'Kering dan memiliki perubahan suhu ekstrem',
+        'Pantai yang berangin kencang',
+        'Pegunungan es yang tinggi',
+        'Delta sungai yang subur',
+      ],
+      jawabanBenar: 'Kering dan memiliki perubahan suhu ekstrem',
+    ),
+    QuizModel(
+      soal: 'Salah satu contoh pelapukan biologis adalah …',
+      jawaban: [
+        'Pembekuan air dalam celah batu',
+        'Reaksi batuan dengan air asam',
+        'Akar tumbuhan yang menembus dan memecah batu',
+        'Pengikisan oleh pasir yang tertiup angin',
+        'Pemuaian dan penyusutan batu karena suhu',
+      ],
+      jawabanBenar: 'Akar tumbuhan yang menembus dan memecah batu',
+    ),
+    QuizModel(
+      soal:
+          'Erosi yang disebabkan oleh aliran air hujan yang membentuk alur-alur kecil pada tanah disebut …',
+      jawaban: [
+        'Erosi percik',
+        'Erosi lembar',
+        'Erosi parit',
+        'Erosi alur',
+        'Erosi gletser',
+      ],
+      jawabanBenar: 'Erosi alur',
+    ),
+    QuizModel(
+      soal:
+          'Gerakan tanah yang sangat lambat dan sering terjadi di daerah lereng disebut …',
+      jawaban: [
+        'Rayapan tanah (soil creep)',
+        'Tanah longsor (land slide)',
+        'Lumpur mengalir (mud flow)',
+        'Tanah nendat (slumping)',
+        'Guguran batu (rock fall)',
+      ],
+      jawabanBenar: 'Rayapan tanah (soil creep)',
+    ),
+    QuizModel(
+      soal:
+          'Proses sedimentasi yang terjadi di daerah muara sungai membentuk lahan baru disebut …',
+      jawaban: [
+        'Bukit pasir',
+        'Tanjung',
+        'Delta',
+        'Cliff',
+        'Abrasi',
+      ],
+      jawabanBenar: 'Delta',
     ),
   ];
 
@@ -251,6 +427,65 @@ class QuizLocalDataSource {
       ],
       jawabanBenar:
           'Menentukan lokasi terbaik untuk evakuasi dan tempat pengungsian',
+    ),
+    QuizModel(
+      soal: 'Indonesia merupakan wilayah yang rawan bencana karena …',
+      jawaban: [
+        'Terletak di dataran tinggi dengan suhu rendah',
+        'Berada di zona iklim tropis yang stabil',
+        'Dikelilingi oleh banyak samudra dan gurun',
+        'Terletak di pertemuan tiga lempeng tektonik aktif',
+        'Memiliki daratan yang sangat luas dan datar',
+      ],
+      jawabanBenar: 'Terletak di pertemuan tiga lempeng tektonik aktif',
+    ),
+    QuizModel(
+      soal:
+          'Jenis bencana yang paling sering terjadi di Kabupaten Bantul, Daerah Istimewa Yogyakarta adalah …',
+      jawaban: [
+        'Banjir dan longsor akibat luapan sungai besar',
+        'Tsunami dan kebakaran hutan',
+        'Gempa bumi akibat aktivitas sesar aktif',
+        'Gunung meletus dari Gunung Merapi',
+        'Gelombang panas dan badai tropis',
+      ],
+      jawabanBenar: 'Gempa bumi akibat aktivitas sesar aktif',
+    ),
+    QuizModel(
+      soal:
+          'Salah satu upaya mitigasi struktural yang dapat dilakukan untuk mengurangi risiko bencana gempa di Bantul adalah …',
+      jawaban: [
+        'Melatih masyarakat melakukan simulasi tsunami',
+        'Membuat sumur resapan di daerah perkotaan',
+        'Membangun rumah tahan gempa dengan fondasi kuat',
+        'Menyediakan masker untuk menghindari abu vulkanik',
+        'Menanami hutan bakau di pesisir pantai selatan',
+      ],
+      jawabanBenar: 'Membangun rumah tahan gempa dengan fondasi kuat',
+    ),
+    QuizModel(
+      soal:
+          'Risiko bencana di wilayah perbukitan selatan Bantul dapat meningkat karena …',
+      jawaban: [
+        'Kepadatan penduduk di wilayah tersebut sangat rendah',
+        'Penggunaan lahan pertanian secara mekanis dan intensif',
+        'Aktivitas vulkanik Gunung Merapi yang semakin aktif',
+        'Penebangan hutan yang menyebabkan lereng menjadi gundul',
+        'Pembangunan pusat perbelanjaan yang merata',
+      ],
+      jawabanBenar: 'Penebangan hutan yang menyebabkan lereng menjadi gundul',
+    ),
+    QuizModel(
+      soal:
+          'Berikut ini adalah salah satu bentuk mitigasi non-struktural yang dapat diterapkan di sekolah-sekolah daerah rawan bencana, seperti di Bantul:',
+      jawaban: [
+        'Menyediakan kendaraan evakuasi di setiap sekolah',
+        'Membangun gedung bertingkat dengan lift evakuasi',
+        'Menyisipkan pendidikan kebencanaan dalam kurikulum',
+        'Mewajibkan siswa memakai helm saat jam pelajaran',
+        'Memasang CCTV untuk mendeteksi gempa',
+      ],
+      jawabanBenar: 'Menyisipkan pendidikan kebencanaan dalam kurikulum',
     ),
   ];
 

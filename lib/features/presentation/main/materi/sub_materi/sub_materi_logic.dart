@@ -93,8 +93,8 @@ class SubMateriLogic extends GetxController {
                 arguments: [materi],
               );
             },
-            totalSoal: 5,
-            totalMenit: 5,
+            totalSoal: 10,
+            totalMenit: 10,
             title: 'kuis',
           );
         }
