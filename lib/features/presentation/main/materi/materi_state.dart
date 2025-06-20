@@ -76,8 +76,14 @@ class MateriState {
       quizNumber: 4,
       subMateri: [
         SubMateriModel(
-          title: 'Risiko Bencana dan Mitigasinya',
-          asset: '4.1-Risiko-Bencana-dan-Mitigasinya.pdf',
+          title: 'Risiko Bencana Geologi dan Faktor Penyebabnya',
+          asset: '4.1-Risiko-Bencana-Geologi-dan-Faktor-Penyebabnya.pdf',
+          progress: 0.0.obs,
+        ),
+        SubMateriModel(
+          title: 'Budaya Sadar Bencana dan Strategi Mitigasi di Sekolah',
+          asset:
+              '4.2-Budaya-Sadar-Bencana-dan-Strategi-Mitigasi-di-Sekolah.pdf',
           progress: 0.0.obs,
         ),
       ],
