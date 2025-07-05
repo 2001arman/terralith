@@ -13,10 +13,11 @@ class KompetensiLogic extends GetxController {
 <h1>Tujuan Pembelajaran</h1>
 <p>Setelah mengikuti pembelajaran ini, peserta didik diharapkan mampu:</p>
 <ol>
-  <li>Menjelaskan konsep litosfer dan struktur pembentukannya.</li>
-  <li>Mengidentifikasi proses endogen dan eksogen yang membentuk permukaan bumi.</li>
-  <li>Menganalisis dampak dinamika litosfer terhadap kehidupan manusia.</li>
-  <li>Mengembangkan sikap peduli terhadap mitigasi bencana yang berkaitan dengan dinamika litosfer.</li>
+  <li>Menjelaskan struktur dan lapisan penyusun litosfer serta proses geologi (endogen dan eksogen) yang membentuk permukaan bumi.</li>
+  <li>Mengidentfikasi berbagai fenomena geologi dan dampaknya terhadap kehidupan.</li>
+  <li>Menganalisis potensi risiko bencana geologi di berbagai wilayah.</li>
+  <li>Menunjukkan kepedulian dan kesadaran terhadap pentingnya mitigasi bencana.</li>
+  <li>Mengembangkan kemandirian belajar melalui eksplorasi aplikasi Terralith sebagai sumber belajar digital.</li>
 </ol>
 
 <h1>Tujuan Pengembangan Aplikasi Terralith</h1>
